@@ -1,0 +1,682 @@
+{
+  "backend": "Cabela4x4PatchBackend",
+  "backend_sha256": "007b0d97770a1f17ebe997ebbf69d71fe1203b48bd1cec0cd650b77c8a4dc71d",
+  "result": "passed",
+  "check_count": 165,
+  "checks": [
+    {
+      "check": "English input identity",
+      "passed": true
+    },
+    {
+      "check": "Russian fixture exact original identity",
+      "passed": true
+    },
+    {
+      "check": "backend PE i386",
+      "passed": true
+    },
+    {
+      "check": "backend Windows GUI subsystem",
+      "passed": true
+    },
+    {
+      "check": "backend managed CLR descriptor",
+      "passed": true
+    },
+    {
+      "check": "backend CLR requires x86",
+      "passed": true
+    },
+    {
+      "check": "en-verify-original: exit",
+      "passed": true
+    },
+    {
+      "check": "en-verify-original: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "en-verify-original: INI exit",
+      "passed": true
+    },
+    {
+      "check": "en-verify-original: INI status",
+      "passed": true
+    },
+    {
+      "check": "en-verify-original: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en: original recognized",
+      "passed": true
+    },
+    {
+      "check": "en-apply: exit",
+      "passed": true
+    },
+    {
+      "check": "en-apply: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "en-apply: INI exit",
+      "passed": true
+    },
+    {
+      "check": "en-apply: INI status",
+      "passed": true
+    },
+    {
+      "check": "en-apply: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en: output exact SHA",
+      "passed": true
+    },
+    {
+      "check": "en: recognized language preserved",
+      "passed": true
+    },
+    {
+      "check": "en: INI Unicode directory",
+      "passed": true
+    },
+    {
+      "check": "en: original verified backup",
+      "passed": true
+    },
+    {
+      "check": "en: only two opcode/checksum differences",
+      "passed": true
+    },
+    {
+      "check": "en: checksum matches independent reference",
+      "passed": true
+    },
+    {
+      "check": "en-verify-patched: exit",
+      "passed": true
+    },
+    {
+      "check": "en-verify-patched: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "en-verify-patched: INI exit",
+      "passed": true
+    },
+    {
+      "check": "en-verify-patched: INI status",
+      "passed": true
+    },
+    {
+      "check": "en-verify-patched: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-apply: exit",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-apply: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-apply: INI exit",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-apply: INI status",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-apply: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en: repeat apply unchanged",
+      "passed": true
+    },
+    {
+      "check": "en-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "en-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "en-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "en-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "en-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en: rollback original exact SHA",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "en-repeat-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en: repeat rollback unchanged",
+      "passed": true
+    },
+    {
+      "check": "en: profile/settings untouched",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-original: exit",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-original: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-original: INI exit",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-original: INI status",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-original: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru: original recognized",
+      "passed": true
+    },
+    {
+      "check": "ru-apply: exit",
+      "passed": true
+    },
+    {
+      "check": "ru-apply: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "ru-apply: INI exit",
+      "passed": true
+    },
+    {
+      "check": "ru-apply: INI status",
+      "passed": true
+    },
+    {
+      "check": "ru-apply: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru: output exact SHA",
+      "passed": true
+    },
+    {
+      "check": "ru: recognized language preserved",
+      "passed": true
+    },
+    {
+      "check": "ru: INI Unicode directory",
+      "passed": true
+    },
+    {
+      "check": "ru: original verified backup",
+      "passed": true
+    },
+    {
+      "check": "ru: only two opcode/checksum differences",
+      "passed": true
+    },
+    {
+      "check": "ru: checksum matches independent reference",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-patched: exit",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-patched: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-patched: INI exit",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-patched: INI status",
+      "passed": true
+    },
+    {
+      "check": "ru-verify-patched: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-apply: exit",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-apply: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-apply: INI exit",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-apply: INI status",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-apply: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru: repeat apply unchanged",
+      "passed": true
+    },
+    {
+      "check": "ru-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "ru-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "ru-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "ru-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "ru-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru: rollback original exact SHA",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "ru-repeat-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru: repeat rollback unchanged",
+      "passed": true
+    },
+    {
+      "check": "ru: profile/settings untouched",
+      "passed": true
+    },
+    {
+      "check": "unknown: exit",
+      "passed": true
+    },
+    {
+      "check": "unknown: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "unknown: INI exit",
+      "passed": true
+    },
+    {
+      "check": "unknown: INI status",
+      "passed": true
+    },
+    {
+      "check": "unknown: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "unknown executable unchanged",
+      "passed": true
+    },
+    {
+      "check": "unknown executable no backup created",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-prepare: exit",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-prepare: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-prepare: INI exit",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-prepare: INI status",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-prepare: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-refused: exit",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-refused: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-refused: INI exit",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-refused: INI status",
+      "passed": true
+    },
+    {
+      "check": "missing-backup-refused: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "missing backup patched executable untouched",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-apply: exit",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-apply: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-apply: INI exit",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-apply: INI status",
+      "passed": true
+    },
+    {
+      "check": "tampered-backup-apply: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "tampered backup target unchanged",
+      "passed": true
+    },
+    {
+      "check": "hardlink-refused: exit",
+      "passed": true
+    },
+    {
+      "check": "hardlink-refused: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "hardlink-refused: INI exit",
+      "passed": true
+    },
+    {
+      "check": "hardlink-refused: INI status",
+      "passed": true
+    },
+    {
+      "check": "hardlink-refused: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "hardlink original untouched",
+      "passed": true
+    },
+    {
+      "check": "unrelated report refused before patch",
+      "passed": true
+    },
+    {
+      "check": "unrelated report untouched",
+      "passed": true
+    },
+    {
+      "check": "unrelated INI refused before patch",
+      "passed": true
+    },
+    {
+      "check": "unrelated INI untouched",
+      "passed": true
+    },
+    {
+      "check": "inert windowless owned process alive",
+      "passed": true
+    },
+    {
+      "check": "running-process-refused: exit",
+      "passed": true
+    },
+    {
+      "check": "running-process-refused: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "running-process-refused: INI exit",
+      "passed": true
+    },
+    {
+      "check": "running-process-refused: INI status",
+      "passed": true
+    },
+    {
+      "check": "running-process-refused: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "running process target untouched",
+      "passed": true
+    },
+    {
+      "check": "owned sleeper stopped",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-apply: native stdcall return (actual 0)",
+      "passed": true
+    },
+    {
+      "check": "en: bridge waits for exact patched output",
+      "passed": true
+    },
+    {
+      "check": "en: bridge completed receipt",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-idempotent: native stdcall return (actual 0)",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "bridge-en-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "en: bridge-backed install reversible",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-apply: native stdcall return (actual 0)",
+      "passed": true
+    },
+    {
+      "check": "ru: bridge waits for exact patched output",
+      "passed": true
+    },
+    {
+      "check": "ru: bridge completed receipt",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-idempotent: native stdcall return (actual 0)",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-rollback: exit",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-rollback: JSON exit",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-rollback: INI exit",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-rollback: INI status",
+      "passed": true
+    },
+    {
+      "check": "bridge-ru-rollback: ANSI profile compatibility",
+      "passed": true
+    },
+    {
+      "check": "ru: bridge-backed install reversible",
+      "passed": true
+    },
+    {
+      "check": "bridge-refusal-unknown: native stdcall return (actual 10)",
+      "passed": true
+    },
+    {
+      "check": "bridge-missing-worker: native stdcall return (actual 14)",
+      "passed": true
+    },
+    {
+      "check": "bridge empty selected directory rejected",
+      "passed": true
+    },
+    {
+      "check": "bridge argument quote rejected",
+      "passed": true
+    },
+    {
+      "check": "bridge missing report directory rejected",
+      "passed": true
+    },
+    {
+      "check": "bridge blocks for delayed owned worker",
+      "passed": true
+    },
+    {
+      "check": "bridge propagates actual exit despite stale success",
+      "passed": true
+    },
+    {
+      "check": "dummy bridge test original executable untouched",
+      "passed": true
+    },
+    {
+      "check": "installed English input unchanged",
+      "passed": true
+    },
+    {
+      "check": "installed Russian input unchanged",
+      "passed": true
+    }
+  ],
+  "fixture_directory": "c4x4-test-e29e454774f8",
+  "game_executed": false,
+  "audio_executed": false,
+  "gui_opened": false,
+  "running_guard_test": "inert owned windowless Thread.Sleep fixture only",
+  "native_bridge_tested": true,
+  "tested_languages": [
+    "en",
+    "ru"
+  ],
+  "source_hashes": {
+    "en": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
+    "ru": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765"
+  }
+}

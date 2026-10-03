@@ -1,0 +1,16 @@
+{
+  "artifact": "Cabela4x4PatchBridge.dll",
+  "sha256": "e86411dd81464dec6229f78b837f0ab6a562be9f44439667303625cb4ff4b1b1",
+  "machine": "0x14c",
+  "exports": [
+    "PatchGame"
+  ],
+  "clr_directory_rva": 0,
+  "imports": [
+    "USER32.DLL",
+    "KERNEL32.DLL"
+  ],
+  "calling_convention": "stdcall, independently invoked by x86 managed ABI test host",
+  "lifecycle_tests": "lifecycle-tests.json",
+  "result": "passed"
+}

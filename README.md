@@ -63,6 +63,15 @@ The version number or language alone is insufficient: different releases or othe
 
 The Russian entry contains identification hashes and patch instructions only. This repository and its releases do not distribute the localization, translated assets, or game executables.
 
+### Original installer support
+
+The [native installer sources](tools/native-installshield/README.md) support a
+private rebuild of the original InstallShield wizard that patches the selected
+folder's executable and preserves either supported language. Its worker and real
+x86 interface passed 165 isolated-copy checks. Full wizard completion remains
+unverified because a silent test without elevation stopped at legacy Error 432
+before the patch script. The original installer components are not published.
+
 ## Inside the project
 
 ```text
@@ -81,6 +90,8 @@ cabelas-4x4-revival/
 │   │   └── v1.2.1-build-selection.json  Supported-build lifecycle results
 │   └── known-issues.md            Remaining renderer questions
 ├── tests/                         Patcher and boundary regression checks
+├── tools/
+│   └── native-installshield/       Patch worker, native bridge and private script authoring
 ├── assets/
 │   └── banner.svg                 Original project artwork
 ├── .github/                       Automated project checks

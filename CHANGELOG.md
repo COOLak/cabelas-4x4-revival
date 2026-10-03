@@ -12,6 +12,7 @@ Community release numbers describe this project's fixes. They do not replace the
 ### Added
 
 - A hash-checked patcher with apply, verify, and rollback commands.
+- Original-source native x86 installer bridge, hidden patch worker, and a script authoring tool for private original-InstallShield rebuilds. The public tree contains no original installer components or fixed game executables.
 - Automatic recognition of official English 1.2 and Russian localization 315-r4, including their patched states. The fix preserves the installed language, and rollback requires that build's original backup.
 - Synthetic regression checks for build selection, language preservation, ambiguous identities, and backups from a different supported build. Existing single-build custom manifests remain supported.
 - A machine-readable fix manifest, forensic explanation, regression checks, and remaining-issue notes.
@@ -20,6 +21,7 @@ Community release numbers describe this project's fixes. They do not replace the
 ### Validation
 
 - Offline replay of the actual x86 routine: **61 original/patched case pairs and 177 checks**.
+- Native installer worker and real x86 stdcall bridge: **165 checks** on isolated copies, including both supported languages, backup integrity, rollback, refusal paths, and synchronous exit-code propagation. Full wizard completion is unverified: a silent run without administrator rights stopped before the patch script with legacy Error 432.
 - The captured bottom-edge input is rejected before a depth read after the fix.
 - Apply, verify, repeated operations, rollback, and refusal of the other build's backup passed in **16 checks on isolated English and Russian executable copies**. Only the two branch bytes and PE checksum changed; independently calculated PE checksums matched, and the source installations were untouched.
 - Live gameplay and graphics-driver verification remain pending. No in-game validation was performed for this release.
