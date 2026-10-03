@@ -21,6 +21,7 @@ Crash dumps can contain private process memory, paths, and account information. 
 - Keep documentation, comments, issue descriptions, and pull requests in English.
 - Target a specific failure and identify whether the game, wrapper, configuration, or another layer caused it.
 - Record the exact supported baseline hash, expected original bytes, replacement bytes, and resulting executable hash.
+- For multiple builds, identify each original and patched executable separately. Preserve each build's installed language and require its own verified rollback backup; include selection and cross-build backup regression checks.
 - Explain control flow, register preservation, stack cleanup, and any changes to valid inputs when editing machine code.
 - Add a meaningful regression check that fails before the fix and passes after it. Verify nearby valid cases as well as the failing boundary.
 - Label static analysis, emulated execution, and real gameplay validation separately.

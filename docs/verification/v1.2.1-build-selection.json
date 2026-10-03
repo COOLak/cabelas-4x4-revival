@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "patch_version": "1.2.1",
+  "manifest_schema_version": 2,
+  "checks": [
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "verify",
+      "state": "original",
+      "exit_code": 0
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "apply",
+      "state": "patched",
+      "exit_code": 0
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "apply",
+      "state": "patched",
+      "exit_code": 0
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "verify",
+      "state": "patched",
+      "exit_code": 0
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "rollback",
+      "state": "original",
+      "exit_code": 0
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "rollback",
+      "state": "original",
+      "exit_code": 0
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "apply",
+      "case": "other_build_backup_refused",
+      "exit_code": 2
+    },
+    {
+      "build": "official-1-2-english",
+      "language": "en",
+      "action": "rollback",
+      "case": "other_build_backup_refused",
+      "exit_code": 2
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "verify",
+      "state": "original",
+      "exit_code": 0
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "apply",
+      "state": "patched",
+      "exit_code": 0
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "apply",
+      "state": "patched",
+      "exit_code": 0
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "verify",
+      "state": "patched",
+      "exit_code": 0
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "rollback",
+      "state": "original",
+      "exit_code": 0
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "rollback",
+      "state": "original",
+      "exit_code": 0
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "apply",
+      "case": "other_build_backup_refused",
+      "exit_code": 2
+    },
+    {
+      "build": "russian-315-r4",
+      "language": "ru",
+      "action": "rollback",
+      "case": "other_build_backup_refused",
+      "exit_code": 2
+    }
+  ],
+  "changed_bytes_limited_to_bounds_and_pe_checksum": true,
+  "independent_pefile_checksum_validation": true,
+  "same_bounds_function_in_both_original_builds": true,
+  "source_binaries_unchanged": true,
+  "tested_only_isolated_copies": true,
+  "game_launched": false,
+  "installer_gui_launched": false,
+  "gameplay_validation": "pending"
+}

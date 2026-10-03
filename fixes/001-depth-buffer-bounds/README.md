@@ -25,9 +25,15 @@ The faulting lookup is at `0x40D2F4`: `mov si, word ptr [edx + ecx*2]`.
 The shared rejection target is `0x40D308`, which returns false and restores
 the function's saved registers.
 
-## Supported executable
+## Supported executables
 
-Filename: `4x4 Adventure.exe`. Size: **749568 bytes**.
+Filename: `4x4 Adventure.exe`. The patcher automatically selects the exact
+supported build by its size and SHA-256 in either original or patched state.
+Its English interface preserves the installed game's language.
+
+### Official English 1.2
+
+Size: **749568 bytes**.
 
 Original official English 1.2 SHA-256:
 
@@ -41,9 +47,26 @@ Patched community 1.2.1 SHA-256:
 9bdb9bfaa4d91f12bc81c0db1a05765c03538fb81f0a523c978733902ba2d3c6
 ```
 
-Other versions, modified executables and localized builds fail the identity
-check. The repository distributes patch instructions and tooling; it does
-not include the original or patched game executable.
+### Russian localization 315-r4 on official 1.2
+
+Size: **757760 bytes**. Its bounds-test code matches the English baseline;
+the same code edits and PE checksum update preserve its translated content.
+
+Original SHA-256:
+
+```text
+ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765
+```
+
+Patched SHA-256:
+
+```text
+a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf
+```
+
+Other versions, modified executables and unlisted localized builds fail the
+identity check. The repository distributes English patch instructions and
+tooling; it includes no localization files or original/patched game executable.
 
 ## Apply, verify, and roll back
 
@@ -61,7 +84,8 @@ read-only. Apply preserves the original executable at
 `revival-backup-1.2.1/4x4 Adventure.exe` inside that installation and replaces
 the executable using a verified temporary file. Rollback restores that exact
 backup. Repeat apply/rollback operations preserve the backup; modified game
-executables or backups are refused.
+executables or backups are refused. A backup from the other supported build
+cannot be used for apply or rollback.
 
 The patcher does not launch the game or change profiles, controls, graphics
 configuration, resources, textures, launcher files, or system settings.
@@ -85,3 +109,15 @@ claim to resolve every crash or the separate lifetime assumptions around
 cached DirectDraw surface pointers.
 
 See [manifest.json](manifest.json) for machine-readable offsets and identities.
+
+## Manifest format
+
+The bundled schema-version-2 manifest lists each supported build's ID,
+English description, language code, and original/patched identities in
+`builds`. Byte changes and the PE-checksum policy are shared. Build IDs and
+all executable hashes must be unique, and every change must fit every build.
+Selection requires both the size and hash; it does not infer a build from
+filenames, language labels, or version strings.
+
+Schema-version-1 custom manifests with a single top-level `source` and
+`patched` pair remain supported through `--manifest PATH`.

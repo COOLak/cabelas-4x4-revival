@@ -18,7 +18,7 @@
 
 ## The first repair
 
-**Community patch 1.2.1 fixes an original depth-buffer boundary error in the official English 1.2 executable.** A visual effect projected onto the first row beyond the bottom of the screen could make the game read outside its depth buffer and crash. The same mistake exists at the right edge.
+**Community patch 1.2.1 fixes an original depth-buffer boundary error and preserves your installed game language.** The defect exists in official English 1.2 and the supported Russian localization 315-r4. A visual effect projected onto the first row beyond the bottom of the screen could make the game read outside its depth buffer and crash. The same mistake exists at the right edge.
 
 The fix changes two conditional-branch bytes. Interior screen coordinates keep their existing behavior; out-of-screen coordinates take the game's existing “do not draw this effect” path.
 
@@ -28,13 +28,14 @@ The fix changes two conditional-branch bytes. Interior screen coordinates keep t
 | Root cause | Original bounds checks allowed coordinates equal to width or height |
 | Fix | Reject equality at both edges before accessing the depth buffer |
 | Offline validation | Actual x86 routine replay: [**61 case pairs, 177 checks**](docs/verification/v1.2.1-replay.json) |
+| Build preservation | [**16 isolated-copy checks**](docs/verification/v1.2.1-build-selection.json) across both supported languages |
 | Gameplay validation | **Pending**; the game and its graphics driver were not launched for verification |
 
 Read the [forensic report](docs/forensics/depth-buffer-bounds.md), [fix specification](fixes/001-depth-buffer-bounds/README.md), and [known issues](docs/known-issues.md).
 
 ## Install
 
-You need your own copy of the game, the **official English 1.2 executable**, and **Python 3.9 or newer** on Windows. Close the game before applying or rolling back a patch.
+You need your own copy of the game, one of the **supported executables below**, and **Python 3.9 or newer** on Windows. Close the game before applying or rolling back a patch. The patcher interface and documentation are in English.
 
 Download and extract the [latest release](../../releases/latest), open a terminal in the extracted project folder, and run:
 
@@ -43,7 +44,7 @@ python src/patcher.py apply --game-dir "C:\Games\Cabela4x4"
 python src/patcher.py verify --game-dir "C:\Games\Cabela4x4"
 ```
 
-Replace the example folder with the folder containing `4x4 Adventure.exe`. The patcher checks the executable's SHA-256 against the supported baseline before changing it and retains a backup for rollback. An unknown executable needs a separate reviewed manifest.
+Replace the example folder with the folder containing `4x4 Adventure.exe`. The patcher automatically recognizes its exact size and SHA-256, reports the selected build and language, and retains that executable as the rollback backup. English stays English; Russian stays Russian. It changes the two bounds-check bytes and PE checksum in your existing executable, preserving its other content and the installation's resources. An unknown executable needs a separate reviewed manifest.
 
 To restore the pre-patch executable:
 
@@ -51,13 +52,16 @@ To restore the pre-patch executable:
 python src/patcher.py rollback --game-dir "C:\Games\Cabela4x4"
 ```
 
-### Supported baseline
+### Supported builds
 
-| Executable | Version | SHA-256 |
-|---|---|---|
-| `4x4 Adventure.exe` | Official English 1.2 | `e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c` |
+| Executable | Build | Language | Original SHA-256 |
+|---|---|---|---|
+| `4x4 Adventure.exe` | Official 1.2 | English | `e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c` |
+| `4x4 Adventure.exe` | Localization 315-r4 on official 1.2 | Russian | `ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765` |
 
-The version number alone is insufficient: different releases or other modifications can produce different binaries. See the machine-readable [manifest](fixes/001-depth-buffer-bounds/manifest.json) for the exact supported bytes and resulting hash.
+The version number or language alone is insufficient: different releases or other modifications can produce different binaries. See the machine-readable [manifest](fixes/001-depth-buffer-bounds/manifest.json) for original and patched identities. Already-patched builds are recognized too. Rollback requires the original backup for that exact build; a backup from another language is refused.
+
+The Russian entry contains identification hashes and patch instructions only. This repository and its releases do not distribute the localization, translated assets, or game executables.
 
 ## Inside the project
 
@@ -67,13 +71,14 @@ cabelas-4x4-revival/
 │   └── patcher.py                 Apply, verify, and roll back reviewed fixes
 ├── fixes/
 │   └── 001-depth-buffer-bounds/
-│       ├── manifest.json          Exact baseline, byte edits, and hashes
+│       ├── manifest.json          Supported builds, byte edits, and hashes
 │       └── README.md              Fix scope and installation details
 ├── docs/
 │   ├── forensics/
 │   │   └── depth-buffer-bounds.md  Evidence and causal analysis
 │   ├── verification/
-│   │   └── v1.2.1-replay.json      Machine-code replay results
+│   │   ├── v1.2.1-replay.json      Machine-code replay results
+│   │   └── v1.2.1-build-selection.json  Supported-build lifecycle results
 │   └── known-issues.md            Remaining renderer questions
 ├── tests/                         Patcher and boundary regression checks
 ├── assets/

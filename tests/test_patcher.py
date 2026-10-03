@@ -50,6 +50,29 @@ def fixture():
     return original, expected, manifest
 
 
+def selection_fixture():
+    """Two same-size synthetic builds with different embedded language markers."""
+    english, english_patched, single = fixture()
+    marker = b"SYNTHETIC_RUSSIAN"
+    russian = bytearray(english)
+    russian[0x200:0x200 + len(marker)] = marker
+    russian_patched = bytearray(russian)
+    russian_patched[0x300] = russian_patched[0x308] = 0x7D
+    struct.pack_into("<I", russian_patched, 0xD8, patcher.pe_checksum(bytes(russian_patched)))
+    originals = {"en": english, "ru": bytes(russian)}
+    patched = {"en": english_patched, "ru": bytes(russian_patched)}
+    manifest = {key: copy.deepcopy(single[key]) for key in
+                ("patch_version", "target_file", "checksum", "changes")}
+    manifest.update(schema_version=2, builds=[
+        {"id": "synthetic-" + language, "name": "Synthetic " + language,
+         "language": language,
+         "source": {"sha256": patcher.digest(originals[language]), "size": len(originals[language])},
+         "patched": {"sha256": patcher.digest(patched[language]), "size": len(patched[language])}}
+        for language in ("en", "ru")
+    ])
+    return originals, patched, manifest
+
+
 class PatcherTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
@@ -277,6 +300,162 @@ class PatcherTests(unittest.TestCase):
             self.assertEqual(patcher.main(["rollback", "--game-dir", str(self.game),
                                           "--manifest", str(self.manifest_file)]), 2)
         self.assertIn("Refused:", error.getvalue())
+
+
+class BuildSelectionTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.base = Path(self.temporary.name)
+        self.game = self.base / "Language selection game"
+        self.game.mkdir()
+        self.originals, self.patched, self.manifest = selection_fixture()
+        self.target = self.game / "4x4 Adventure.exe"
+        self.backup = self.game / "revival-backup-1.2.1" / self.target.name
+        self.manifest_file = self.base / "supported-builds.json"
+        self.manifest_file.write_text(json.dumps(self.manifest), encoding="utf-8")
+        self.guard = mock.patch.object(patcher, "running_game_pids", return_value=[])
+        self.guard.start()
+        self.addCleanup(self.guard.stop)
+
+    def snapshot(self):
+        return {str(path.relative_to(self.game)): path.read_bytes()
+                for path in self.game.rglob("*") if path.is_file()}
+
+    def test_automatic_selection_preserves_each_language_through_full_lifecycle(self):
+        resources = self.game / "synthetic-language-resource.txt"
+        for language in ("en", "ru"):
+            with self.subTest(language=language):
+                if self.backup.exists():
+                    self.backup.unlink()
+                self.target.write_bytes(self.originals[language])
+                resources.write_bytes(("Resource stays " + language).encode("ascii"))
+                manifest = patcher.load_manifest(self.manifest_file)
+                for action, state, message in (
+                    ("apply", "patched", "applied"),
+                    ("apply", "patched", "already applied"),
+                    ("rollback", "original", "rolled back"),
+                    ("rollback", "original", "already original"),
+                ):
+                    result = patcher.operate(action, self.game, manifest)
+                    self.assertEqual(result["build"], "synthetic-" + language)
+                    self.assertEqual(result["language"], language)
+                    self.assertEqual(result["state"], state)
+                    self.assertEqual(result["result"], message)
+                    expected = self.patched[language] if state == "patched" else self.originals[language]
+                    self.assertEqual(self.target.read_bytes(), expected)
+                    self.assertEqual(self.backup.read_bytes(), self.originals[language])
+                    self.assertEqual(resources.read_bytes(), ("Resource stays " + language).encode("ascii"))
+
+    def test_verify_identifies_both_languages_in_both_states_without_writing(self):
+        for language in ("en", "ru"):
+            for state, collection in (("original", self.originals), ("patched", self.patched)):
+                with self.subTest(language=language, state=state):
+                    self.target.write_bytes(collection[language])
+                    before = self.snapshot()
+                    result = patcher.operate("verify", self.game, self.manifest)
+                    self.assertEqual((result["language"], result["state"]), (language, state))
+                    self.assertEqual(self.snapshot(), before)
+                    self.assertFalse(self.backup.exists())
+
+    def test_default_cli_selects_build_without_a_manifest_option(self):
+        self.target.write_bytes(self.originals["ru"])
+        with mock.patch.object(patcher, "DEFAULT_MANIFEST", self.manifest_file):
+            for action, state in (("apply", "patched"), ("verify", "patched"), ("rollback", "original")):
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output):
+                    code = patcher.main([action, "--game-dir", str(self.game)])
+                self.assertEqual(code, 0)
+                result = json.loads(output.getvalue())
+                self.assertEqual((result["build"], result["language"], result["state"]),
+                                 ("synthetic-ru", "ru", state))
+
+    def test_backup_from_other_supported_language_is_refused(self):
+        self.backup.parent.mkdir()
+        for language, other in (("en", "ru"), ("ru", "en")):
+            for state, collection, actions in (
+                ("original", self.originals, ("apply",)),
+                ("patched", self.patched, ("apply", "rollback")),
+            ):
+                self.target.write_bytes(collection[language])
+                self.backup.write_bytes(self.originals[other])
+                for action in actions:
+                    with self.subTest(language=language, state=state, action=action):
+                        before = self.snapshot()
+                        with self.assertRaises(patcher.PatchError):
+                            patcher.operate(action, self.game, self.manifest)
+                        self.assertEqual(self.snapshot(), before)
+
+    def test_unknown_same_size_build_is_refused_without_writes(self):
+        modified = bytearray(self.originals["ru"])
+        modified[-1] ^= 1
+        self.target.write_bytes(modified)
+        before = self.snapshot()
+        for action in ("apply", "verify", "rollback"):
+            with self.assertRaises(patcher.PatchError):
+                patcher.operate(action, self.game, self.manifest)
+        self.assertEqual(self.snapshot(), before)
+        self.assertFalse(self.backup.parent.exists())
+
+    def test_identity_requires_size_as_well_as_hash(self):
+        self.target.write_bytes(self.originals["ru"])
+        bad = copy.deepcopy(self.manifest)
+        bad["builds"][1]["source"]["size"] += 1
+        with self.assertRaises(patcher.PatchError):
+            patcher.operate("apply", self.game, bad)
+        self.assertEqual(self.target.read_bytes(), self.originals["ru"])
+        self.assertFalse(self.backup.parent.exists())
+
+    def test_supported_build_order_does_not_change_selection(self):
+        reversed_manifest = copy.deepcopy(self.manifest)
+        reversed_manifest["builds"].reverse()
+        for language in ("en", "ru"):
+            self.assertEqual(patcher.select_build(self.originals[language], reversed_manifest)["language"], language)
+            self.assertEqual(patcher.make_patched(self.originals[language], reversed_manifest), self.patched[language])
+
+    def test_wrong_output_identity_for_selected_build_is_refused_before_backup(self):
+        self.target.write_bytes(self.originals["ru"])
+        bad = copy.deepcopy(self.manifest)
+        bad["builds"][1]["patched"]["sha256"] = "0" * 64
+        with self.assertRaises(patcher.PatchError):
+            patcher.operate("apply", self.game, bad)
+        self.assertEqual(self.target.read_bytes(), self.originals["ru"])
+        self.assertFalse(self.backup.parent.exists())
+
+    def test_ambiguous_or_invalid_build_metadata_is_rejected(self):
+        variants = []
+        for mutation in (
+            lambda manifest: manifest.update(builds=[]),
+            lambda manifest: manifest["builds"][1].update(id="synthetic-en"),
+            lambda manifest: manifest["builds"][1].update(id="../unsafe"),
+            lambda manifest: manifest["builds"][1].update(name=""),
+            lambda manifest: manifest["builds"][1].update(language=""),
+            lambda manifest: manifest["builds"][1].update(source=copy.deepcopy(manifest["builds"][0]["source"])),
+            lambda manifest: manifest["builds"][1].update(patched=copy.deepcopy(manifest["builds"][0]["source"])),
+            lambda manifest: manifest["builds"][1].update(patched=copy.deepcopy(manifest["builds"][1]["source"])),
+        ):
+            bad = copy.deepcopy(self.manifest)
+            mutation(bad)
+            variants.append(bad)
+        for index, bad in enumerate(variants):
+            with self.subTest(index=index):
+                self.manifest_file.write_text(json.dumps(bad), encoding="utf-8")
+                with self.assertRaises(patcher.PatchError):
+                    patcher.load_manifest(self.manifest_file)
+
+    def test_shared_change_must_fit_every_supported_build(self):
+        bad = copy.deepcopy(self.manifest)
+        bad["builds"][1]["source"]["size"] = 512
+        bad["builds"][1]["patched"]["size"] = 512
+        self.manifest_file.write_text(json.dumps(bad), encoding="utf-8")
+        with self.assertRaises(patcher.PatchError):
+            patcher.load_manifest(self.manifest_file)
+
+    def test_direct_ambiguous_selection_is_refused(self):
+        bad = copy.deepcopy(self.manifest)
+        bad["builds"].append(copy.deepcopy(bad["builds"][1]))
+        with self.assertRaises(patcher.PatchError):
+            patcher.select_build(self.originals["ru"], bad)
 
 
 class WindowsProcessTests(unittest.TestCase):

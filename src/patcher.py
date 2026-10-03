@@ -61,7 +61,7 @@ def pe_checksum(data: bytes) -> int:
 def load_manifest(path: Path) -> Dict[str, Any]:
     try:
         manifest = json.loads(path.read_text(encoding="utf-8"))
-        if not isinstance(manifest, dict) or manifest.get("schema_version") != 1:
+        if not isinstance(manifest, dict) or type(manifest.get("schema_version")) is not int or manifest["schema_version"] not in (1, 2):
             raise ValueError("unsupported schema")
         version = manifest["patch_version"]
         target = manifest["target_file"]
@@ -73,13 +73,33 @@ def load_manifest(path: Path) -> Dict[str, Any]:
             or target.endswith((".", " "))
         ):
             raise ValueError("target must be a plain filename")
-        for identity in (manifest["source"], manifest["patched"]):
-            if not re.fullmatch(r"[0-9a-f]{64}", identity["sha256"]):
-                raise ValueError("invalid SHA-256")
-            if type(identity["size"]) is not int or identity["size"] < 64:
-                raise ValueError("invalid executable size")
-        if manifest["source"]["size"] != manifest["patched"]["size"]:
-            raise ValueError("this patcher only supports fixed-size changes")
+        builds = supported_builds(manifest)
+        if not isinstance(builds, list) or not builds:
+            raise ValueError("empty supported-build list")
+        build_ids, hashes = set(), set()
+        for build in builds:
+            if not isinstance(build, dict):
+                raise ValueError("invalid supported build")
+            if manifest["schema_version"] == 2:
+                if not isinstance(build["id"], str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", build["id"]):
+                    raise ValueError("invalid build ID")
+                if build["id"] in build_ids:
+                    raise ValueError("duplicate build ID")
+                build_ids.add(build["id"])
+                if not isinstance(build["name"], str) or not build["name"].strip():
+                    raise ValueError("invalid build name")
+                if not isinstance(build["language"], str) or not re.fullmatch(r"[a-z]{2,3}(?:-[A-Z]{2})?", build["language"]):
+                    raise ValueError("invalid build language")
+            for identity in (build["source"], build["patched"]):
+                if not re.fullmatch(r"[0-9a-f]{64}", identity["sha256"]):
+                    raise ValueError("invalid SHA-256")
+                if type(identity["size"]) is not int or identity["size"] < 64:
+                    raise ValueError("invalid executable size")
+                if identity["sha256"] in hashes:
+                    raise ValueError("ambiguous executable identity")
+                hashes.add(identity["sha256"])
+            if build["source"]["size"] != build["patched"]["size"]:
+                raise ValueError("this patcher only supports fixed-size changes")
         if manifest.get("checksum") != "pe":
             raise ValueError("unsupported checksum policy")
         changes = manifest["changes"]
@@ -95,7 +115,7 @@ def load_manifest(path: Path) -> Dict[str, Any]:
             if not before or len(before) != len(after):
                 raise ValueError("changes must be nonempty and fixed-size")
             positions = set(range(at, at + len(before)))
-            if at + len(before) > manifest["source"]["size"] or used & positions:
+            if any(at + len(before) > build["source"]["size"] for build in builds) or used & positions:
                 raise ValueError("overlapping or out-of-file changes")
             used |= positions
         return manifest
@@ -103,8 +123,29 @@ def load_manifest(path: Path) -> Dict[str, Any]:
         raise PatchError("Cannot read a valid patch manifest: {}".format(exc)) from exc
 
 
+def supported_builds(manifest: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Schema 1 remains usable for existing single-build custom manifests."""
+    return manifest["builds"] if manifest.get("schema_version") == 2 else [manifest]
+
+
+def select_build(data: bytes, manifest: Dict[str, Any],
+                 identity: Optional[str] = None) -> Dict[str, Any]:
+    """Recognize an original or patched build without guessing from its language."""
+    identity = digest(data) if identity is None else identity
+    matches = [build for build in supported_builds(manifest)
+               if any(identity == state["sha256"] and len(data) == state["size"]
+                      for state in (build["source"], build["patched"]))]
+    if not matches:
+        raise PatchError("Unsupported or modified executable. No executable was changed.")
+    if len(matches) != 1:
+        raise PatchError("Ambiguous executable identity; no executable was changed.")
+    return matches[0]
+
+
 def make_patched(data: bytes, manifest: Dict[str, Any]) -> bytes:
-    if len(data) != manifest["source"]["size"] or digest(data) != manifest["source"]["sha256"]:
+    identity = digest(data)
+    build = select_build(data, manifest, identity)
+    if len(data) != build["source"]["size"] or identity != build["source"]["sha256"]:
         raise PatchError("Unsupported executable. The source size or SHA-256 does not match.")
     checksum_offset = pe_checksum_offset(data)
     output = bytearray(data)
@@ -118,7 +159,7 @@ def make_patched(data: bytes, manifest: Dict[str, Any]) -> bytes:
         output[at:at + len(old)] = new
     struct.pack_into("<I", output, checksum_offset, pe_checksum(bytes(output)))
     result = bytes(output)
-    if digest(result) != manifest["patched"]["sha256"]:
+    if digest(result) != build["patched"]["sha256"]:
         raise PatchError("The reconstructed patch does not match its expected SHA-256.")
     return result
 
@@ -280,7 +321,8 @@ def operate(action: str, directory: Path, manifest: Dict[str, Any]) -> Dict[str,
     backup = contained(root, root / ("revival-backup-" + manifest["patch_version"]) / manifest["target_file"])
     current = read_file(root, target)
     identity = digest(current)
-    source, patched = manifest["source"], manifest["patched"]
+    build = select_build(current, manifest, identity)
+    source, patched = build["source"], build["patched"]
     if identity == source["sha256"] and len(current) == source["size"]:
         state = "original"
     elif identity == patched["sha256"] and len(current) == patched["size"]:
@@ -289,6 +331,8 @@ def operate(action: str, directory: Path, manifest: Dict[str, Any]) -> Dict[str,
         raise PatchError("Unsupported or modified executable. No executable was changed.")
     result = {"action": action, "state": state, "patch_version": manifest["patch_version"],
               "executable": str(target), "sha256": identity, "backup": str(backup)}
+    if manifest.get("schema_version") == 2:
+        result.update(build=build["id"], build_name=build["name"], language=build["language"])
     if action == "verify":
         return result
     assert_stopped()
@@ -318,8 +362,8 @@ def operate(action: str, directory: Path, manifest: Dict[str, Any]) -> Dict[str,
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Apply, verify, or roll back the unofficial Cabela's 4x4 1.2.1 fix.")
     parser.add_argument("action", choices=("apply", "verify", "rollback"))
-    parser.add_argument("--game-dir", required=True, type=Path, help="Existing English official 1.2 game directory.")
-    parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST, help="Patch manifest; defaults to the bundled official-1.2 manifest.")
+    parser.add_argument("--game-dir", required=True, type=Path, help="Existing supported game directory; its current language is preserved.")
+    parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST, help="Patch manifest; the bundled manifest automatically recognizes supported builds.")
     args = parser.parse_args(argv)
     try:
         result = operate(args.action, args.game_dir, load_manifest(args.manifest))

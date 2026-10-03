@@ -4,7 +4,7 @@
 |---|---|
 | Fix ID | `001-depth-buffer-bounds` |
 | Community release | `1.2.1` |
-| Supported baseline | Official English `4x4 Adventure.exe`, version 1.2 |
+| Supported builds | Official English 1.2 and Russian localization 315-r4 |
 | Faulting instruction | VA `0x0040D2F4`, RVA and file offset `0xD2F4` |
 | Correction | Two `JG` instructions become `JGE` |
 | Verification | Static analysis and isolated x86 replay; gameplay pending |
@@ -75,6 +75,8 @@ Caller `0x0040D800` projects the effect point and invokes this depth test at `0x
 ## Original defect, modern manifestation
 
 The complete bounds-test routine, its surface setup, and its dimension initialization were compared against the preserved official English 1.2 baseline. The faulty instructions are present in that original executable.
+
+The same routines are byte-for-byte identical in the supported Russian localization 315-r4. The patcher identifies each complete executable separately and applies the same two code changes to the installed build. Its language-specific content remains intact; localization files are not part of this repository.
 
 ```text
 Official English 1.2 SHA-256
