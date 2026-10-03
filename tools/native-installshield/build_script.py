@@ -70,10 +70,7 @@ def build(original):
     dll_path, folder_copy, error_text = 35, 36, 37
     opt1, opt2, worker_status, call_result = 47, 48, 49, 50
     title = "Cabela's 4x4 Community Patch 1.2.1"
-    welcome = ('This patch fixes the depth-buffer boundary error in version 1.2. '
-               'It modifies your installed executable and preserves its language. '
-               'A supported version 1.2 executable is required. '
-               'Close the game and its launcher before continuing.')
+    welcome = "This will install Cabela's 4x4 Community Patch 1.2.1."
     main = b''.join([
         frame(
             opcode(0x2, integer(12)),
@@ -105,8 +102,8 @@ def build(original):
             branch(8, 6, source_number(call_result), integer(1)),
             goto(2)),
         frame(
-            call(5, 215, string('Select the game folder'),
-                 string('Choose the existing folder containing 4x4 Adventure.exe.'),
+            call(5, 215, string('Choose Destination Location'),
+                 string("Select the folder where Cabela's 4x4 is installed."),
                  dest_string(3), integer(0)),
             opcode(0x21, dest_number(call_result), source_number(0)),
             branch(1, 5, source_number(call_result), integer(12)),
@@ -144,11 +141,9 @@ def build(original):
             opcode(0x2a, source_string(folder_copy), integer(0x10)),
             goto(2)),
         frame(
-            call(30, 749, string('Patch installed'),
-                 string('Version 1.2.1 is installed and its executable hash has been verified. '
-                        'Your game language and controls are preserved. '
-                        'The original executable is saved in the game folder.'),
-                 string('You can now start the game yourself.'), string(''), string(''),
+            call(30, 749, string('Setup Complete'),
+                 string("Cabela's 4x4 has been updated to version 1.2.1."),
+                 string(''), string(''), string(''),
                  dest_number(opt1), dest_number(opt2)),
             goto(8)),
         frame(opcode(0x2b)),

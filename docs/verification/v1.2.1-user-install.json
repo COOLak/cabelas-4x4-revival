@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "scope": "Read-only verification after actual user-run native installer patch application",
+  "verified_script_sha256": "abc02df7c019cae040782710e5272a6114b33e30041bd46832b61271db46c7cd",
+  "build_id": "compatible-1-2-variant",
+  "installed_bytes": 757760,
+  "installed_sha256": "a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf",
+  "original_backup_sha256": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765",
+  "original_backup_retained": true,
+  "exact_changes": [
+    {
+      "offset": 320,
+      "offset_hex": "0x140",
+      "before": 67,
+      "after": 65
+    },
+    {
+      "offset": 321,
+      "offset_hex": "0x141",
+      "before": 134,
+      "after": 132
+    },
+    {
+      "offset": 53973,
+      "offset_hex": "0xd2d5",
+      "before": 127,
+      "after": 125
+    },
+    {
+      "offset": 53978,
+      "offset_hex": "0xd2da",
+      "before": 127,
+      "after": 125
+    }
+  ],
+  "pe_checksum": {
+    "offset": 320,
+    "offset_hex": "0x140",
+    "stored": 820289,
+    "computed": 820289,
+    "valid": true,
+    "original_stored": 820803
+  },
+  "receipt": {
+    "patch_version": "1.2.1",
+    "action": "apply",
+    "changed": true,
+    "before_sha256": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765",
+    "after_sha256": "a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf",
+    "state": "patched",
+    "status": "applied",
+    "exit_code": 0
+  },
+  "game_launched_for_verification": false,
+  "source_receipts": "Private original receipts retained; paths and content metadata omitted"
+}

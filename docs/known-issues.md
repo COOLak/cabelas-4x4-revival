@@ -37,7 +37,8 @@ explains the missing diagnostic file. The rebuilt workflow uses the enabled
 `CallDLLFx` interface and native receipt I/O instead. See the
 [interface investigation](forensics/installshield-native-interface.md).
 
-Full interactive wizard completion still requires a user-run installation.
-The automated silent test without administrator rights stopped before the
-script with legacy Error 432. The public Python patcher provides the separately
-verified apply, verify and rollback route.
+Patch application through a user-run original wizard is now confirmed by the
+installed executable hash, intact original backup and fresh success receipt.
+The text-only revision retains that workflow; its dialog layout is checked
+separately. The automated silent test without administrator rights stopped
+before the script with legacy Error 432.

@@ -15,6 +15,7 @@ Community release numbers describe this project's fixes. They do not replace the
 - Original-source native x86 installer bridge, hidden patch worker, and a script authoring tool for private original-InstallShield rebuilds. The public tree contains no original installer components or fixed game executables.
 - Original-registry destination detection at each native installer launch and corrected OK/error dialogs.
 - A `CallDLLFx` adapter for the original installer's enabled native interface. The earlier `UseDLL` integration and its script INI diagnostics called disabled engine operations; the bridge now performs receipt I/O itself.
+- Short welcome, destination and completion messages that fit the original wizard's text controls.
 - Automatic recognition of official 1.2 and a compatible 1.2 variant, including their patched states. The fix preserves the installed build's content, and rollback requires that build's original backup.
 - Synthetic regression checks for build selection, content preservation, ambiguous identities, and backups from a different supported build. Existing single-build custom manifests remain supported.
 - A machine-readable fix manifest, forensic explanation, regression checks, and remaining-issue notes.

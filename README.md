@@ -68,9 +68,9 @@ The compatible variant is identified by its exact hash; it is not described as a
 The [native installer sources](tools/native-installshield/README.md) support a
 private rebuild of the original InstallShield wizard that patches the selected
 folder's executable and preserves the selected build's existing content. Its worker and real
-x86 interface passed 165 isolated-copy checks. Full wizard completion remains
-unverified because a silent test without elevation stopped at legacy Error 432
-before the patch script. The original installer components are not published.
+x86 interface passed 165 isolated-copy checks. Patch application through a
+user-run wizard is confirmed by the installed hash, original backup and fresh
+success receipt. The original installer components are not published.
 
 The corrected script calls the original engine's enabled `CallDLLFx` interface.
 The earlier `UseDLL` call failed before attempting a Windows DLL load; the

@@ -78,12 +78,12 @@ the DLL. The same restriction disabled the script's INI diagnostics. The
 workflow now uses the engine's enabled `CallDLLFx` handler and performs receipt
 I/O in the native bridge. See the [interface investigation](../../docs/forensics/installshield-native-interface.md).
 
-**Complete wizard execution remains unverified.** A private-desktop silent test
-without administrator rights stopped before the script with legacy Error 432.
-The installed Microsoft launcher normally requests elevation. The testing did
-not approve that prompt, replace the system uninstaller, alter compatibility
-settings or execute the game. The existing Python patcher remains the fully
-tested public installation route.
+An actual user-run wizard applied the patch successfully: the installed hash,
+intact original backup and fresh receipt were independently checked. See the
+[installation verification](../../docs/verification/v1.2.1-user-install.json).
+The subsequent text-only revision uses short welcome, destination and completion
+messages. An unprivileged silent automation still stops before the script with
+legacy Error 432; the installed Microsoft launcher normally requests elevation.
 
 Original InstallShield executables, scripts, resources and SDK files are not
 distributed here. Obtain and retain your own official installer. This directory
