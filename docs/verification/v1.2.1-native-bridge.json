@@ -1,16 +1,25 @@
 {
   "artifact": "Cabela4x4PatchBridge.dll",
-  "sha256": "e86411dd81464dec6229f78b837f0ab6a562be9f44439667303625cb4ff4b1b1",
+  "sha256": "9afba7657efe32b09912366b72ff5ae04ed84802b6eb08879c81f504e4c066b6",
+  "source_sha256": "cdb1a0e08e46c0e6ccf6c545f87efcaae7cfc15e211277e3f3354955c09d998c",
   "machine": "0x14c",
   "exports": [
-    "PatchGame"
+    "PatchGame",
+    "PatchInstaller"
   ],
   "clr_directory_rva": 0,
   "imports": [
     "USER32.DLL",
     "KERNEL32.DLL"
   ],
-  "calling_convention": "stdcall, independently invoked by x86 managed ABI test host",
-  "lifecycle_tests": "lifecycle-tests.json",
+  "calling_convention": "x86 stdcall; both exports invoked by a real x86 ABI host; PatchInstaller additionally invoked through original CallDLLFx handler",
+  "signatures": {
+    "PatchGame": "int WINAPI PatchGame(const char*, const char*, const char*)",
+    "PatchInstaller": "LONG WINAPI PatchInstaller(HWND, LONG*, LPSTR)"
+  },
+  "lifecycle_tests": "v1.2.1-native-backend.json",
+  "lifecycle_check_count": 165,
+  "installer_interface_tests": "v1.2.1-native-interface.json",
+  "installer_interface_check_count": 131,
   "result": "passed"
 }

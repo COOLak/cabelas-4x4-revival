@@ -24,15 +24,15 @@ try {
     Push-Location -LiteralPath $resolvedOutput
     try {
         [IO.File]::Copy((Join-Path $PSScriptRoot 'PatchBridge.c'), (Join-Path $resolvedOutput 'PatchBridge.c'), $true)
-        & (Join-Path $watcomRoot 'binnt/wcc386.exe') '-q' '-bt=nt' '-bd' '-bm' '-ox' '-fo=PatchBridge.obj' 'PatchBridge.c'
-        if ($LASTEXITCODE -ne 0) { throw 'Native bridge compilation failed.' }
+        $compiler = Start-Process -FilePath (Join-Path $watcomRoot 'binnt/wcc386.exe') -ArgumentList @('-q','-bt=nt','-bd','-bm','-ox','-fo=PatchBridge.obj','PatchBridge.c') -WorkingDirectory $resolvedOutput -WindowStyle Hidden -Wait -PassThru
+        if ($compiler.ExitCode -ne 0) { throw "Native bridge compilation failed (exit $($compiler.ExitCode))." }
         # Use an owned initialization file with the compiler's short path.
         [IO.File]::WriteAllText((Join-Path $resolvedOutput 'bridge-empty.lnk'), "# private linker initialization`r`n", [Text.Encoding]::ASCII)
         $env:WLINK_LNK = 'bridge-empty.lnk'
-        $directives = @('format windows nt dll','runtime windows=4.0','option quiet','name Cabela4x4PatchBridge.dll','file PatchBridge.obj',("libpath '" + (Join-Path $watcomRoot 'lib386') + "'"),("libpath '" + (Join-Path $watcomRoot 'lib386/nt') + "'"),'library kernel32,user32',"export PatchGame='_PatchGame@12'") -join "`r`n"
+        $directives = @('format windows nt dll','runtime windows=4.0','option quiet','name Cabela4x4PatchBridge.dll','file PatchBridge.obj',("libpath '" + (Join-Path $watcomRoot 'lib386') + "'"),("libpath '" + (Join-Path $watcomRoot 'lib386/nt') + "'"),'library kernel32,user32',"export PatchGame='_PatchGame@12'", "export PatchInstaller='_PatchInstaller@12'") -join "`r`n"
         [IO.File]::WriteAllText((Join-Path $resolvedOutput 'bridge-link.lnk'), $directives + "`r`n", [Text.Encoding]::ASCII)
-        & (Join-Path $watcomRoot 'binnt/wlink.exe') '@bridge-link.lnk'
-        if ($LASTEXITCODE -ne 0) { throw 'Native bridge linking failed.' }
+        $linker = Start-Process -FilePath (Join-Path $watcomRoot 'binnt/wlink.exe') -ArgumentList '@bridge-link.lnk' -WorkingDirectory $resolvedOutput -WindowStyle Hidden -Wait -PassThru
+        if ($linker.ExitCode -ne 0) { throw "Native bridge linking failed (exit $($linker.ExitCode))." }
     } finally { Pop-Location }
 } finally {
     $env:WATCOM = $oldWatcom

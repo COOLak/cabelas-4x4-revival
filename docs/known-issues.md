@@ -28,13 +28,16 @@ The faulty boundary checks are present in the original official 1.2 executable. 
 
 Memory layout and protection can determine whether an invalid read immediately raises an exception, silently samples unrelated data, or appears harmless. A lower resolution or a different wrapper may change how the defect appears without correcting its bounds.
 
-## Native installer component loading
+## Native installer validation
 
-A private original-InstallShield wizard reported a native support-component
-load failure. The exact support DLL loads and exposes its entry point in an
-independent 32-bit process, and static checks confirm the script framing,
-load-result comparison and sufficient path buffers. This excludes those
-specific explanations but does not identify the wizard failure. The authored
-script collects its actual runtime paths and loader return code; full wizard
-completion and a causal repair remain pending. The public Python patcher
-provides the separately verified apply, verify and rollback route.
+The earlier private wizard's `UseDLL result: -1` was traced to a null entry in
+the original engine's built-in dispatch table. The dispatcher returned before
+any Windows DLL-loading call. Its INI-writing command was disabled too, which
+explains the missing diagnostic file. The rebuilt workflow uses the enabled
+`CallDLLFx` interface and native receipt I/O instead. See the
+[interface investigation](forensics/installshield-native-interface.md).
+
+Full interactive wizard completion still requires a user-run installation.
+The automated silent test without administrator rights stopped before the
+script with legacy Error 432. The public Python patcher provides the separately
+verified apply, verify and rollback route.

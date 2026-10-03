@@ -5,10 +5,14 @@ patch its chosen destination's existing executable instead of carrying a fixed
 game executable. The supported identities and two byte edits
 are the same as the Python patcher.
 
-`PatchBridge.c` exports a native x86 `int __stdcall PatchGame(const char *,
-const char *, const char *)`. The original engine calls it synchronously. The
-bridge starts the windowless .NET Framework 4 worker, waits for termination and
-checks its result receipt before reporting success to the wizard.
+`PatchBridge.c` exports the native x86 `LONG WINAPI PatchInstaller(HWND,
+LONG *, LPSTR)` interface expected by InstallShield's built-in `CallDLLFx`.
+The string argument receives a copy of the selected game directory; a failure
+returns a short English explanation through that copy. The bridge locates the
+worker beside its own DLL, creates a fresh temporary receipt directory, starts
+the windowless .NET Framework 4 worker, and waits for its real exit code and
+verified receipt before reporting success to the wizard. The separate
+`PatchGame` export remains available to the direct-interface regression suite.
 
 `PatchBackend.cs` handles strict build detection, backup, patch, verification,
 idempotence and rollback. It refuses unknown binaries, unsafe file paths,
@@ -33,7 +37,7 @@ of this repository and its source releases.
 
 `build_script.py` authors nine new main event records in a user's original
 official 1.2 `setup.ins`. It keeps all original dialog event IDs and opaque
-library bytes, appends its native import and variables, and recalculates the
+library bytes, appends its working variables, and recalculates the
 InstallScript byte-sum checksum. `inspect_tables.py` reads metadata tables;
 neither tool reconstructs the original script source. Run it with Python 3.9+:
 
@@ -61,14 +65,20 @@ including a real x86 stdcall host, both supported executable builds and synchron
 propagation. Static checks confirmed the authored script framing, checksum,
 allocated variables, dialog bindings and unchanged original dialog library.
 
-**Complete wizard execution remains unverified.** A user-run wizard reported
-a native component load failure despite the DLL being present. The authored
-script now records its real source/support directories, attempted DLL path and
-`UseDLL` result in `patch-loader.ini`, and displays the path and return code in
-an OK/error dialog. This is diagnostic instrumentation; a loader repair has not
-yet been established.
+The corrected adapter passed [131 interface checks](../../docs/verification/v1.2.1-native-interface.json):
+107 direct x86 adapter checks and 24 checks through the genuine original
+`CallDLLFx` native handler. The handler patched isolated copies of both supported
+builds to their exact expected hashes, refused an unknown executable, and
+returned failure for a missing DLL. All caller-buffer guards remained intact.
+These tests invoked the handler directly without running the wizard entry point.
 
- A private-desktop silent test
+The earlier private wizard failed because this original engine's dispatch table
+has no handler for `UseDLL`. Its dispatcher returned `-1` before trying to load
+the DLL. The same restriction disabled the script's INI diagnostics. The
+workflow now uses the engine's enabled `CallDLLFx` handler and performs receipt
+I/O in the native bridge. See the [interface investigation](../../docs/forensics/installshield-native-interface.md).
+
+**Complete wizard execution remains unverified.** A private-desktop silent test
 without administrator rights stopped before the script with legacy Error 432.
 The installed Microsoft launcher normally requests elevation. The testing did
 not approve that prompt, replace the system uninstaller, alter compatibility

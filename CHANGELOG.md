@@ -13,7 +13,8 @@ Community release numbers describe this project's fixes. They do not replace the
 
 - A hash-checked patcher with apply, verify, and rollback commands.
 - Original-source native x86 installer bridge, hidden patch worker, and a script authoring tool for private original-InstallShield rebuilds. The public tree contains no original installer components or fixed game executables.
-- Original-registry destination detection at each native installer launch, plus runtime loader diagnostics and corrected OK/error dialogs.
+- Original-registry destination detection at each native installer launch and corrected OK/error dialogs.
+- A `CallDLLFx` adapter for the original installer's enabled native interface. The earlier `UseDLL` integration and its script INI diagnostics called disabled engine operations; the bridge now performs receipt I/O itself.
 - Automatic recognition of official 1.2 and a compatible 1.2 variant, including their patched states. The fix preserves the installed build's content, and rollback requires that build's original backup.
 - Synthetic regression checks for build selection, content preservation, ambiguous identities, and backups from a different supported build. Existing single-build custom manifests remain supported.
 - A machine-readable fix manifest, forensic explanation, regression checks, and remaining-issue notes.
@@ -23,6 +24,7 @@ Community release numbers describe this project's fixes. They do not replace the
 
 - Offline replay of the actual x86 routine: **61 original/patched case pairs and 177 checks**.
 - Native installer worker and real x86 stdcall bridge: **165 checks** on isolated copies, including both supported builds, backup integrity, rollback, refusal paths, and synchronous exit-code propagation. Full wizard completion is unverified: a silent run without administrator rights stopped before the patch script with legacy Error 432.
+- Corrected native installer interface: **131 checks**, including four direct executions of the original engine's `CallDLLFx` handler against isolated supported, unknown and missing-component cases. Authored-main dispatch and argument verification passed **467 static checks**. Both successful handler cases produced their exact expected patched hashes.
 - The captured bottom-edge input is rejected before a depth read after the fix.
 - Apply, verify, repeated operations, rollback, and refusal of the other build's backup passed in **16 checks on isolated copies of both supported executable builds**. Only the two branch bytes and PE checksum changed; independently calculated PE checksums matched, and the source installations were untouched.
 - Live gameplay and graphics-driver verification remain pending. No in-game validation was performed for this release.

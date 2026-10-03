@@ -665,7 +665,7 @@
       "passed": true
     }
   ],
-  "fixture_directory": "c4x4-test-38d0a640e91c",
+  "fixture_directory": "c4x4-test-85b22f6fb274",
   "game_executed": false,
   "audio_executed": false,
   "gui_opened": false,
@@ -680,6 +680,6 @@
     "und": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765"
   },
   "public_source_sha256": "70653c7cbcd4be6b2d5beb014eef2cc51ac80ff33b3e3372467cb0ac92ac2e5b",
-  "native_bridge_sha256": "e86411dd81464dec6229f78b837f0ab6a562be9f44439667303625cb4ff4b1b1",
-  "public_evidence_note": "Fresh headless lifecycle tests execute the newly compiled public PatchBackend.cs, including its neutral und build marker. Public fixture names are normalized to variant/und; all 165 outcomes and exact executable identities are retained. The previously verified private native bridge supplies the x86 stdcall test path. Private source, worker, bridge and harness hashes were checked unchanged."
+  "native_bridge_sha256": "9afba7657efe32b09912366b72ff5ae04ed84802b6eb08879c81f504e4c066b6",
+  "public_evidence_note": "Fresh 165 headless lifecycle checks execute the public worker identified by backend_sha256 and the new native bridge identified by native_bridge_sha256. The original protected game installations were hash-checked unchanged. Public fixture markers are en/und; all outcomes and supported executable identities are retained."
 }

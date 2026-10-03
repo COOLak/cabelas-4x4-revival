@@ -1,0 +1,2562 @@
+{
+  "engine_sha256": "82ca5fd2d52ddbef610dccb4641fab4e84f8e55d81f1d92ec34a41b54beb0664",
+  "candidate_sha256": "abc02df7c019cae040782710e5272a6114b33e30041bd46832b61271db46c7cd",
+  "checks": 467,
+  "passed": true,
+  "authored_events": 9,
+  "action_count": 53,
+  "unique_main_opcodes": [
+    "0x1",
+    "0x2",
+    "0x4",
+    "0xc",
+    "0x13",
+    "0x21",
+    "0x22",
+    "0x2a",
+    "0x2b",
+    "0x2c",
+    "0x2f",
+    "0x6e",
+    "0xb5",
+    "0x110",
+    "0x124",
+    "0x125",
+    "0x13b",
+    "0x152"
+  ],
+  "frames": [
+    {
+      "event": 0,
+      "action_count": 21,
+      "actions": [
+        {
+          "opcode": "0x2",
+          "handler": "0x466d5f",
+          "argument_tags": [
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x1",
+          "handler": "0x466579",
+          "argument_tags": [
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x1",
+          "handler": "0x466579",
+          "argument_tags": [
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x4",
+          "handler": "0x455a43",
+          "argument_tags": [
+            "0x61",
+            "0x41",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x4",
+          "handler": "0x455a43",
+          "argument_tags": [
+            "0x61",
+            "0x41",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0xb5",
+          "handler": "0x45c4fd",
+          "argument_tags": [
+            "0x61"
+          ]
+        },
+        {
+          "opcode": "0x1",
+          "handler": "0x466579",
+          "argument_tags": [
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x13",
+          "handler": "0x45d608",
+          "argument_tags": [
+            "0x52",
+            "0x61"
+          ]
+        },
+        {
+          "opcode": "0x125",
+          "handler": "0x45e682",
+          "argument_tags": [
+            "0x52",
+            "0x62",
+            "0x61"
+          ]
+        },
+        {
+          "opcode": "0x21",
+          "handler": "0x4180cb",
+          "argument_tags": [
+            "0x32",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x21",
+          "handler": "0x4180cb",
+          "argument_tags": [
+            "0x32",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x13",
+          "handler": "0x45d608",
+          "argument_tags": [
+            "0x52",
+            "0x61"
+          ]
+        },
+        {
+          "opcode": "0x110",
+          "handler": "0x447995",
+          "argument_tags": [
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x152",
+          "handler": "0x447e77",
+          "argument_tags": [
+            "0x61",
+            "0x61",
+            "0x32",
+            "0x52",
+            "0x32"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2f",
+          "handler": "0x45e15b",
+          "argument_tags": [
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0xc",
+          "handler": "0x4622c5",
+          "argument_tags": [
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x13",
+          "handler": "0x45d608",
+          "argument_tags": [
+            "0x52",
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 1,
+      "action_count": 4,
+      "actions": [
+        {
+          "opcode": "0xb5",
+          "handler": "0x45c4fd",
+          "argument_tags": [
+            "0x61",
+            "0x61"
+          ]
+        },
+        {
+          "opcode": "0x21",
+          "handler": "0x4180cb",
+          "argument_tags": [
+            "0x32",
+            "0x42"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 2,
+      "action_count": 5,
+      "actions": [
+        {
+          "opcode": "0xb5",
+          "handler": "0x45c4fd",
+          "argument_tags": [
+            "0x61",
+            "0x61",
+            "0x52",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x21",
+          "handler": "0x4180cb",
+          "argument_tags": [
+            "0x32",
+            "0x42"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 3,
+      "action_count": 6,
+      "actions": [
+        {
+          "opcode": "0x13",
+          "handler": "0x45d608",
+          "argument_tags": [
+            "0x52",
+            "0x61"
+          ]
+        },
+        {
+          "opcode": "0x13",
+          "handler": "0x45d608",
+          "argument_tags": [
+            "0x52",
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x21",
+          "handler": "0x4180cb",
+          "argument_tags": [
+            "0x32",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x13b",
+          "handler": "0x441c78",
+          "argument_tags": [
+            "0x62",
+            "0x61",
+            "0x32",
+            "0x52"
+          ]
+        },
+        {
+          "opcode": "0x21",
+          "handler": "0x4180cb",
+          "argument_tags": [
+            "0x32",
+            "0x42"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 4,
+      "action_count": 4,
+      "actions": [
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 5,
+      "action_count": 7,
+      "actions": [
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x6e",
+          "handler": "0x45d7f8",
+          "argument_tags": [
+            "0x52",
+            "0x42"
+          ]
+        },
+        {
+          "opcode": "0x124",
+          "handler": "0x45d6e9",
+          "argument_tags": [
+            "0x52",
+            "0x61",
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x124",
+          "handler": "0x45d6e9",
+          "argument_tags": [
+            "0x52",
+            "0x62",
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x124",
+          "handler": "0x45d6e9",
+          "argument_tags": [
+            "0x52",
+            "0x61",
+            "0x62"
+          ]
+        },
+        {
+          "opcode": "0x2a",
+          "handler": "0x468c2d",
+          "argument_tags": [
+            "0x62",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 6,
+      "action_count": 3,
+      "actions": [
+        {
+          "opcode": "0x22",
+          "handler": "0x4180f1",
+          "argument_tags": [
+            "0x70",
+            "0x42",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2a",
+          "handler": "0x468c2d",
+          "argument_tags": [
+            "0x62",
+            "0x41"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 7,
+      "action_count": 2,
+      "actions": [
+        {
+          "opcode": "0xb5",
+          "handler": "0x45c4fd",
+          "argument_tags": [
+            "0x61",
+            "0x61",
+            "0x61",
+            "0x61",
+            "0x61",
+            "0x32",
+            "0x32"
+          ]
+        },
+        {
+          "opcode": "0x2c",
+          "handler": "0x417b99",
+          "argument_tags": [
+            "0x70"
+          ]
+        }
+      ]
+    },
+    {
+      "event": 8,
+      "action_count": 1,
+      "actions": [
+        {
+          "opcode": "0x2b",
+          "handler": "0x44a0de",
+          "argument_tags": []
+        }
+      ]
+    }
+  ],
+  "sdk_calls": [
+    {
+      "event": 0,
+      "prototype": 26,
+      "target": 676,
+      "argument_tags": [
+        "0x61"
+      ]
+    },
+    {
+      "event": 1,
+      "prototype": 6,
+      "target": 232,
+      "argument_tags": [
+        "0x61",
+        "0x61"
+      ]
+    },
+    {
+      "event": 2,
+      "prototype": 5,
+      "target": 215,
+      "argument_tags": [
+        "0x61",
+        "0x61",
+        "0x52",
+        "0x41"
+      ]
+    },
+    {
+      "event": 7,
+      "prototype": 30,
+      "target": 749,
+      "argument_tags": [
+        "0x61",
+        "0x61",
+        "0x61",
+        "0x61",
+        "0x61",
+        "0x32",
+        "0x32"
+      ]
+    }
+  ],
+  "success_gate_cases": [
+    {
+      "native_return": -1,
+      "worker_status": -1,
+      "next_event": 5
+    },
+    {
+      "native_return": -1,
+      "worker_status": 0,
+      "next_event": 5
+    },
+    {
+      "native_return": -1,
+      "worker_status": 1,
+      "next_event": 5
+    },
+    {
+      "native_return": -1,
+      "worker_status": 14,
+      "next_event": 5
+    },
+    {
+      "native_return": -1,
+      "worker_status": 64,
+      "next_event": 5
+    },
+    {
+      "native_return": 0,
+      "worker_status": -1,
+      "next_event": 6
+    },
+    {
+      "native_return": 0,
+      "worker_status": 0,
+      "next_event": 7
+    },
+    {
+      "native_return": 0,
+      "worker_status": 1,
+      "next_event": 6
+    },
+    {
+      "native_return": 0,
+      "worker_status": 14,
+      "next_event": 6
+    },
+    {
+      "native_return": 0,
+      "worker_status": 64,
+      "next_event": 6
+    },
+    {
+      "native_return": 1,
+      "worker_status": -1,
+      "next_event": 6
+    },
+    {
+      "native_return": 1,
+      "worker_status": 0,
+      "next_event": 6
+    },
+    {
+      "native_return": 1,
+      "worker_status": 1,
+      "next_event": 6
+    },
+    {
+      "native_return": 1,
+      "worker_status": 14,
+      "next_event": 6
+    },
+    {
+      "native_return": 1,
+      "worker_status": 64,
+      "next_event": 6
+    },
+    {
+      "native_return": 14,
+      "worker_status": -1,
+      "next_event": 6
+    },
+    {
+      "native_return": 14,
+      "worker_status": 0,
+      "next_event": 6
+    },
+    {
+      "native_return": 14,
+      "worker_status": 1,
+      "next_event": 6
+    },
+    {
+      "native_return": 14,
+      "worker_status": 14,
+      "next_event": 6
+    },
+    {
+      "native_return": 14,
+      "worker_status": 64,
+      "next_event": 6
+    },
+    {
+      "native_return": 64,
+      "worker_status": -1,
+      "next_event": 6
+    },
+    {
+      "native_return": 64,
+      "worker_status": 0,
+      "next_event": 6
+    },
+    {
+      "native_return": 64,
+      "worker_status": 1,
+      "next_event": 6
+    },
+    {
+      "native_return": 64,
+      "worker_status": 14,
+      "next_event": 6
+    },
+    {
+      "native_return": 64,
+      "worker_status": 64,
+      "next_event": 6
+    }
+  ],
+  "game_launch": false,
+  "wizard_launch": false,
+  "validation": "static authored-main dispatch, argument binding and completion-gate audit",
+  "check_results": [
+    {
+      "check": "engine exact identity",
+      "passed": true
+    },
+    {
+      "check": "script checksum",
+      "passed": true
+    },
+    {
+      "check": "776 events",
+      "passed": true
+    },
+    {
+      "check": "event 0 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 0 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 0 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 2 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 2 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 3 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 4 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 5 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 5 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 5 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 SDK prototype tag",
+      "passed": true
+    },
+    {
+      "check": "event 0 SDK event tag",
+      "passed": true
+    },
+    {
+      "check": "event 0 retained SDK target",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 6 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 6 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 6 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 6 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 6 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 7 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 7 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 7 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 7 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 7 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 7 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 8 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 9 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 9 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 9 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 9 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 9 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 9 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 10 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 10 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 10 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 10 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 10 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 10 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 11 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 11 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 11 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 11 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 11 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 11 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 12 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 12 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 12 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 12 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 12 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 arg 3 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 13 arg 4 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 14 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 14 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 14 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 15 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 15 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 15 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 15 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 15 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 16 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 16 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 16 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 17 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 17 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 17 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 17 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 17 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 18 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 18 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 18 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 0 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 0 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 19 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 19 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 19 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 19 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 19 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 19 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 20 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 20 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 20 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 20 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 0 action 20 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 0 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 1 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 SDK prototype tag",
+      "passed": true
+    },
+    {
+      "check": "event 1 SDK event tag",
+      "passed": true
+    },
+    {
+      "check": "event 1 retained SDK target",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 1 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 1 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 1 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 1 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 1 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 1 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 3 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 3 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 3 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 3 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 1 action 3 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 1 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 2 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 SDK prototype tag",
+      "passed": true
+    },
+    {
+      "check": "event 2 SDK event tag",
+      "passed": true
+    },
+    {
+      "check": "event 2 retained SDK target",
+      "passed": true
+    },
+    {
+      "check": "event 2 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 1 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 2 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 2 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 2 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 2 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 2 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 3 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 3 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 3 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 2 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 2 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 2 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 4 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 4 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 4 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 4 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 2 action 4 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 2 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 3 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 0 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 0 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 0 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 1 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 2 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 2 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 2 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 3 arg 3 binding",
+      "passed": true
+    },
+    {
+      "check": "CallDLLFx expected ABI export",
+      "passed": true
+    },
+    {
+      "check": "CallDLLFx numeric by-reference slot",
+      "passed": true
+    },
+    {
+      "check": "CallDLLFx string by-reference slot",
+      "passed": true
+    },
+    {
+      "check": "event 3 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 4 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 4 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 4 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 4 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 4 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 4 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 5 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 5 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 5 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 5 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 3 action 5 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 3 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 4 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 4 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 4 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 4 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 4 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 3 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 3 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 3 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 3 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 4 action 3 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 4 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 5 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 5 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 5 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 5 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 1 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 2 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 3 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 4 arg 2 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 5 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 5 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 5 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 5 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 5 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 5 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 error dialog OK",
+      "passed": true
+    },
+    {
+      "check": "event 5 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 6 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 6 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 6 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 6 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 5 action 6 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 5 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 6 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 6 branch target type",
+      "passed": true
+    },
+    {
+      "check": "event 6 branch comparison",
+      "passed": true
+    },
+    {
+      "check": "event 6 branch operands",
+      "passed": true
+    },
+    {
+      "check": "event 6 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 1 arg 1 binding",
+      "passed": true
+    },
+    {
+      "check": "event 6 error dialog OK",
+      "passed": true
+    },
+    {
+      "check": "event 6 string slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 2 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 2 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 2 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 2 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 6 action 2 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 6 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 7 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 7 SDK prototype tag",
+      "passed": true
+    },
+    {
+      "check": "event 7 SDK event tag",
+      "passed": true
+    },
+    {
+      "check": "event 7 retained SDK target",
+      "passed": true
+    },
+    {
+      "check": "event 7 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 7 number slot in bounds",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 1 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 1 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 1 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 1 native argument count",
+      "passed": true
+    },
+    {
+      "check": "event 7 action 1 arg 0 binding",
+      "passed": true
+    },
+    {
+      "check": "event 7 jump target",
+      "passed": true
+    },
+    {
+      "check": "event 8 reserved zero",
+      "passed": true
+    },
+    {
+      "check": "event 8 action 0 known main opcode",
+      "passed": true
+    },
+    {
+      "check": "event 8 action 0 enabled entry",
+      "passed": true
+    },
+    {
+      "check": "event 8 action 0 excludes disabled opcode",
+      "passed": true
+    },
+    {
+      "check": "event 8 action 0 native argument count",
+      "passed": true
+    },
+    {
+      "check": "retained opaque SDK identity",
+      "passed": true
+    },
+    {
+      "check": "exactly one CallDLLFx",
+      "passed": true
+    },
+    {
+      "check": "worker status seeded failure before native call",
+      "passed": true
+    },
+    {
+      "check": "native return immediately cached separately",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return -1 status -1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return -1 status 0",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return -1 status 1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return -1 status 14",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return -1 status 64",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 0 status -1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 0 status 0",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 0 status 1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 0 status 14",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 0 status 64",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 1 status -1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 1 status 0",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 1 status 1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 1 status 14",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 1 status 64",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 14 status -1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 14 status 0",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 14 status 1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 14 status 14",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 14 status 64",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 64 status -1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 64 status 0",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 64 status 1",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 64 status 14",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate uses guarded numeric slots",
+      "passed": true
+    },
+    {
+      "check": "success gate return 64 status 64",
+      "passed": true
+    }
+  ]
+}

@@ -66,9 +66,9 @@ def build(original):
     assert hdr['event_count'] == 776 and len(hdr['string_slots']) == 35
     assert hdr['number_slots'] == 47 and len(hdr['prototypes']) == 105
 
-    # Allocate new globals after the original script/library globals.
-    dll_path, ini_path, error_text, loader_log = 35, 36, 37, 38
-    opt1, opt2, result = 47, 48, 49
+    # New globals are appended after the untouched original/library slots.
+    dll_path, folder_copy, error_text = 35, 36, 37
+    opt1, opt2, worker_status, call_result = 47, 48, 49, 50
     title = "Cabela's 4x4 Community Patch 1.2.1"
     welcome = ('This patch fixes the depth-buffer boundary error in version 1.2. '
                'It modifies your installed executable and preserves its language. '
@@ -85,11 +85,9 @@ def build(original):
             opcode(0x1, integer(12)),
             opcode(0x13, dest_string(3), string('C:\\Games')),
             opcode(0x125, dest_string(dll_path), source_string(0), string('Cabela4x4PatchBridge.dll')),
-            opcode(0x125, dest_string(ini_path), source_string(10), string('patch-result.ini')),
             opcode(0x21, dest_number(opt1), integer(0)),
             opcode(0x21, dest_number(opt2), integer(0)),
-            # Read the original game's HKCU Path1 without changing its registry key.
-            # These original scratch slots are unused by the retained SDK dialogs.
+            # Reuse the original read-only HKCU Path1 lookup and scratch ABI.
             opcode(0x13, dest_string(34), string('')),
             opcode(0x110, integer(0x80000001)),
             opcode(0x152, string("Software\\Activision Value\\Cabela's Off-road Adventure"),
@@ -103,39 +101,39 @@ def build(original):
             goto(1)),
         frame(
             call(6, 232, string(title), string(welcome)),
-            opcode(0x21, dest_number(result), source_number(0)),
-            branch(8, 6, source_number(result), integer(1)),
+            opcode(0x21, dest_number(call_result), source_number(0)),
+            branch(8, 6, source_number(call_result), integer(1)),
             goto(2)),
         frame(
             call(5, 215, string('Select the game folder'),
                  string('Choose the existing folder containing 4x4 Adventure.exe.'),
                  dest_string(3), integer(0)),
-            opcode(0x21, dest_number(result), source_number(0)),
-            branch(1, 5, source_number(result), integer(12)),
-            branch(8, 6, source_number(result), integer(1)),
+            opcode(0x21, dest_number(call_result), source_number(0)),
+            branch(1, 5, source_number(call_result), integer(12)),
+            branch(8, 6, source_number(call_result), integer(1)),
             goto(3)),
         frame(
-            # Record the real engine paths before loading the component. The
-            # extracted source directory owns this per-run diagnostic file.
-            opcode(0x125, dest_string(loader_log), source_string(0), string('patch-loader.ini')),
-            opcode(0x25, source_string(loader_log), string('Loader'), string('SRCDIR'), source_string(0)),
-            opcode(0x25, source_string(loader_log), string('Loader'), string('SUPPORTDIR'), source_string(10)),
-            opcode(0x25, source_string(loader_log), string('Loader'), string('dll_path'), source_string(dll_path)),
-            opcode(0xb2, source_string(dll_path)),
-            opcode(0x21, dest_number(result), source_number(0)),
-            opcode(0x6e, dest_string(error_text), source_number(result)),
-            opcode(0x25, source_string(loader_log), string('Loader'), string('UseDLL_result'), source_string(error_text)),
-            branch(5, 1, source_number(result), integer(0)),
+            # The engine grows this dynamic string for the long seed and never
+            # shrinks it for the shorter path. The DLL writes at most239 bytes.
+            # Pass only this private copy; TARGETDIR must survive error returns.
+            opcode(0x13, dest_string(folder_copy), string(' ' * 300)),
+            opcode(0x13, dest_string(folder_copy), source_string(3)),
+            opcode(0x21, dest_number(worker_status), integer(-1)),
+            # This original engine supports CallDLLFx, whose last two arguments
+            # are writable variable indices, not source operand expressions.
+            opcode(0x13b, source_string(dll_path), string('PatchInstaller'),
+                   dest_number(worker_status), dest_string(folder_copy)),
+            opcode(0x21, dest_number(call_result), source_number(0)),
             goto(4)),
         frame(
-            opcode(0xb4, b'\x80' + word(105), source_string(3), source_string(0), source_string(10)),
-            opcode(0x21, dest_number(result), source_number(0)),
-            opcode(0xb3, source_string(dll_path)),
-            branch(6, 6, source_number(result), integer(0)),
+            branch(5, 1, source_number(call_result), integer(0)),
+            branch(6, 6, source_number(call_result), integer(0)),
+            branch(6, 6, source_number(worker_status), integer(0)),
             goto(7)),
         frame(
             branch(8, 5, source_number(4), integer(3)),
-            opcode(0x124, dest_string(error_text), string('\nUseDLL result: '), source_string(error_text)),
+            opcode(0x6e, dest_string(error_text), source_number(call_result)),
+            opcode(0x124, dest_string(error_text), string('\nLoader result: '), source_string(error_text)),
             opcode(0x124, dest_string(error_text), source_string(dll_path), source_string(error_text)),
             opcode(0x124, dest_string(error_text),
                    string('The native patch component could not be loaded.\nDLL: '), source_string(error_text)),
@@ -143,9 +141,7 @@ def build(original):
             goto(8)),
         frame(
             branch(8, 5, source_number(4), integer(3)),
-            opcode(0x13, dest_string(error_text), string('The selected game could not be patched.')),
-            opcode(0x26, source_string(ini_path), string('PatchResult'), string('error'), dest_string(error_text)),
-            opcode(0x2a, source_string(error_text), integer(0x10)),
+            opcode(0x2a, source_string(folder_copy), integer(0x10)),
             goto(2)),
         frame(
             call(30, 749, string('Patch installed'),
@@ -158,23 +154,25 @@ def build(original):
         frame(opcode(0x2b)),
     ])
 
-    # Append a real stdcall native DLL prototype: int PatchGame(STRING,STRING,STRING).
-    proto = word(1) + word(3) + text('Cabela4x4PatchBridge') + text('PatchGame')
-    proto += word(3) + (word(0) + word(4)) * 3
+    # CallDLLFx uses the supported engine builtin and requires no new prototype.
     header = bytearray(original[:hdr['code_offset']])
-    struct.pack_into('<H', header, hdr['prototype_count_offset'], 106)
-    struct.pack_into('<H', header, hdr['number_slots_offset'], 50)
-    struct.pack_into('<H', header, hdr['string_slots_offset'], 39)
+    struct.pack_into('<H', header, hdr['number_slots_offset'], 51)
+    struct.pack_into('<H', header, hdr['string_slots_offset'], 38)
     slots_end = hdr['string_slots_offset'] + 2 + 35 * 2
-    header[slots_end:slots_end] = word(65535) * 4
-    out = header + proto + main + opaque + original[footer_start:]
+    header[slots_end:slots_end] = word(65535) * 3
+    out = header + main + opaque + original[footer_start:]
     struct.pack_into('<I', out, 8, sum(out[12:]) & 0xffffffff)
     report = dict(
         original_sha256=ORIGINAL_HASH, output_sha256=hashlib.sha256(out).hexdigest(),
         original_main_events=9, authored_main_events=9, event_count=776,
         retained_event_ids=[9, 775], retained_library_sha256=LIBRARY_HASH,
-        retained_library_bytes=len(opaque), added_dll_prototype=105,
-        string_slots=39, number_slots=50, checksum=struct.unpack_from('<I', out, 8)[0],
+        retained_library_bytes=len(opaque), prototype_count=105,
+        native_call_opcode='0x13b', native_export='PatchInstaller',
+        native_abi='LONG WINAPI (HWND, LONG*, LPSTR)',
+        globals=dict(dll_path=35, folder_copy=36, error_text=37,
+                     worker_status=49, call_result=50),
+        string_slots=38, number_slots=51, checksum=struct.unpack_from('<I', out, 8)[0],
+        selected_target_preserved=True, mutable_string_seed_bytes=300,
         game_executable_payload=False, game_registry_writes=False,
         game_launch=False, command_wrapper_required=False,
     )

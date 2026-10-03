@@ -72,6 +72,12 @@ x86 interface passed 165 isolated-copy checks. Full wizard completion remains
 unverified because a silent test without elevation stopped at legacy Error 432
 before the patch script. The original installer components are not published.
 
+The corrected script calls the original engine's enabled `CallDLLFx` interface.
+The earlier `UseDLL` call failed before attempting a Windows DLL load; the
+[investigation](docs/forensics/installshield-native-interface.md) records the
+dispatch evidence and the replacement interface. The default destination is
+read from the game's original registry entry at each launch.
+
 ## Inside the project
 
 ```text

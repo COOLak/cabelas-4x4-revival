@@ -1,0 +1,655 @@
+{
+  "result": "passed",
+  "check_count": 131,
+  "checks": [
+    {
+      "check": "English fixture identity",
+      "passed": true
+    },
+    {
+      "check": "Compatible fixture identity",
+      "passed": true
+    },
+    {
+      "check": "en-apply: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "en-apply: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "en-apply: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "en-apply: successful folder copy preserved",
+      "passed": true
+    },
+    {
+      "check": "en-apply: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "en-apply: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "en-apply: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "en-apply: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "en: exact patched executable",
+      "passed": true
+    },
+    {
+      "check": "en: fresh completed worker receipt",
+      "passed": true
+    },
+    {
+      "check": "en: supported build marker preserved",
+      "passed": true
+    },
+    {
+      "check": "en: original verified backup",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: successful folder copy preserved",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "en-repeat: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "en: idempotent exact output",
+      "passed": true
+    },
+    {
+      "check": "en: profile and controls unchanged",
+      "passed": true
+    },
+    {
+      "check": "en: install reversible",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: successful folder copy preserved",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "variant-apply: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "variant: exact patched executable",
+      "passed": true
+    },
+    {
+      "check": "variant: fresh completed worker receipt",
+      "passed": true
+    },
+    {
+      "check": "variant: supported build marker preserved",
+      "passed": true
+    },
+    {
+      "check": "variant: original verified backup",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: successful folder copy preserved",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "variant-repeat: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "variant: idempotent exact output",
+      "passed": true
+    },
+    {
+      "check": "variant: profile and controls unchanged",
+      "passed": true
+    },
+    {
+      "check": "variant: install reversible",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: short ASCII error text",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "unknown-refused: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "unknown: executable untouched",
+      "passed": true
+    },
+    {
+      "check": "unknown: no backup created",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: short ASCII error text",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "missing-worker-refused: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "missing worker: executable untouched",
+      "passed": true
+    },
+    {
+      "check": "running guard: inert owned process alive",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: short ASCII error text",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "running-guard-refused: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "running guard: executable untouched",
+      "passed": true
+    },
+    {
+      "check": "running guard: owned sleeper stopped",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: short ASCII error text",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: waits for real child exit",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: no unrelated prior receipt accepted",
+      "passed": true
+    },
+    {
+      "check": "delayed-error: executable untouched",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: short ASCII error text",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: module-derived source",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: stage diagnostic status",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: original selected folder logged",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: unique owned Temp receipt folder",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: no unrelated prior receipt accepted",
+      "passed": true
+    },
+    {
+      "check": "zero-without-receipt: executable untouched",
+      "passed": true
+    },
+    {
+      "check": "unrelated-stage-file: actual stdcall return",
+      "passed": true
+    },
+    {
+      "check": "unrelated-stage-file: synchronous LONG status",
+      "passed": true
+    },
+    {
+      "check": "unrelated-stage-file: writable buffer guards intact",
+      "passed": true
+    },
+    {
+      "check": "unrelated-stage-file: successful folder copy preserved",
+      "passed": true
+    },
+    {
+      "check": "unrelated stage file: preserved byte-for-byte",
+      "passed": true
+    },
+    {
+      "check": "unrelated stage file: patch still verified",
+      "passed": true
+    },
+    {
+      "check": "installed English input unchanged",
+      "passed": true
+    },
+    {
+      "check": "installed compatible input unchanged",
+      "passed": true
+    },
+    {
+      "check": "engine en: genuine native handler returned",
+      "passed": true
+    },
+    {
+      "check": "engine en: exact x86 engine mapping",
+      "passed": true
+    },
+    {
+      "check": "engine en: VM and worker status propagation",
+      "passed": true
+    },
+    {
+      "check": "engine en: mutable string bounds and result",
+      "passed": true
+    },
+    {
+      "check": "engine en: exact executable outcome",
+      "passed": true
+    },
+    {
+      "check": "engine en: actual DLL load and export path",
+      "passed": true
+    },
+    {
+      "check": "engine variant: genuine native handler returned",
+      "passed": true
+    },
+    {
+      "check": "engine variant: exact x86 engine mapping",
+      "passed": true
+    },
+    {
+      "check": "engine variant: VM and worker status propagation",
+      "passed": true
+    },
+    {
+      "check": "engine variant: mutable string bounds and result",
+      "passed": true
+    },
+    {
+      "check": "engine variant: exact executable outcome",
+      "passed": true
+    },
+    {
+      "check": "engine variant: actual DLL load and export path",
+      "passed": true
+    },
+    {
+      "check": "engine unknown: genuine native handler returned",
+      "passed": true
+    },
+    {
+      "check": "engine unknown: exact x86 engine mapping",
+      "passed": true
+    },
+    {
+      "check": "engine unknown: VM and worker status propagation",
+      "passed": true
+    },
+    {
+      "check": "engine unknown: mutable string bounds and result",
+      "passed": true
+    },
+    {
+      "check": "engine unknown: exact executable outcome",
+      "passed": true
+    },
+    {
+      "check": "engine unknown: actual DLL load and export path",
+      "passed": true
+    },
+    {
+      "check": "engine missing-component: genuine native handler returned",
+      "passed": true
+    },
+    {
+      "check": "engine missing-component: exact x86 engine mapping",
+      "passed": true
+    },
+    {
+      "check": "engine missing-component: VM and worker status propagation",
+      "passed": true
+    },
+    {
+      "check": "engine missing-component: mutable string bounds and result",
+      "passed": true
+    },
+    {
+      "check": "engine missing-component: exact executable outcome",
+      "passed": true
+    },
+    {
+      "check": "engine missing-component: actual DLL load and export path",
+      "passed": true
+    }
+  ],
+  "bridge_sha256": "9afba7657efe32b09912366b72ff5ae04ed84802b6eb08879c81f504e4c066b6",
+  "bridge_source_sha256": "cdb1a0e08e46c0e6ccf6c545f87efcaae7cfc15e211277e3f3354955c09d998c",
+  "backend_sha256": "9a9dbf3a8a2d515c25646ddf7175bbcf4d7d95539518e3957396b79975e460aa",
+  "abi": "LONG WINAPI PatchInstaller(HWND, LONG*, LPSTR)",
+  "error_text_max_bytes": 239,
+  "caller_buffer_bytes": 258,
+  "cases": [
+    {
+      "name": "en-apply",
+      "exit_code": 0,
+      "error_text": null
+    },
+    {
+      "name": "en-repeat",
+      "exit_code": 0,
+      "error_text": null
+    },
+    {
+      "name": "variant-apply",
+      "exit_code": 0,
+      "error_text": null
+    },
+    {
+      "name": "variant-repeat",
+      "exit_code": 0,
+      "error_text": null
+    },
+    {
+      "name": "unknown-refused",
+      "exit_code": 10,
+      "error_text": "The selected executable is not a supported version 1.2 build."
+    },
+    {
+      "name": "missing-worker-refused",
+      "exit_code": 14,
+      "error_text": "The patch worker could not complete. Check the installer files and receipt."
+    },
+    {
+      "name": "running-guard-refused",
+      "exit_code": 11,
+      "error_text": "Close the game and its launcher, then try again."
+    },
+    {
+      "name": "delayed-error",
+      "exit_code": 37,
+      "error_text": "The patch worker returned an error. Check the temporary patch receipt."
+    },
+    {
+      "name": "zero-without-receipt",
+      "exit_code": 14,
+      "error_text": "The patch worker could not complete. Check the installer files and receipt."
+    },
+    {
+      "name": "unrelated-stage-file",
+      "exit_code": 0,
+      "error_text": null
+    }
+  ],
+  "tested_build_markers": [
+    "en",
+    "und"
+  ],
+  "source_hashes": {
+    "en": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
+    "variant": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765"
+  },
+  "game_executed": false,
+  "wizard_started": false,
+  "running_guard_fixture": "owned inert windowless Thread.Sleep executable; exact child terminated",
+  "receipts_preserved": true,
+  "direct_adapter_check_count": 107,
+  "engine_handler_verification": {
+    "result": "passed",
+    "case_count": 4,
+    "check_count": 24,
+    "engine_sha256": "82ca5fd2d52ddbef610dccb4641fab4e84f8e55d81f1d92ec34a41b54beb0664",
+    "host_source_sha256": "61d6f51598d0f6b28de14333f673e5ab41d58378b1e7df16d0479e4a943b53d8",
+    "host_exe_sha256": "8f4cc8ceb02bf48c3ebcd42524c021173e4b382723e9795ac0dee944ffe6d653",
+    "scope": "The genuine enabled CallDLLFx handler is called in an isolated mapped x86 image with real Windows imports and exact mutable global arguments. The engine entry point, wizard and game are never called.",
+    "cases": [
+      {
+        "name": "en",
+        "vm_last_result": 0,
+        "worker_status": 0,
+        "buffer_guards_intact": true,
+        "output_sha256": "9bdb9bfaa4d91f12bc81c0db1a05765c03538fb81f0a523c978733902ba2d3c6",
+        "expected_output_sha256": "9bdb9bfaa4d91f12bc81c0db1a05765c03538fb81f0a523c978733902ba2d3c6",
+        "bridge_loaded": true,
+        "installer_export_invoked": true
+      },
+      {
+        "name": "variant",
+        "vm_last_result": 0,
+        "worker_status": 0,
+        "buffer_guards_intact": true,
+        "output_sha256": "a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf",
+        "expected_output_sha256": "a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf",
+        "bridge_loaded": true,
+        "installer_export_invoked": true
+      },
+      {
+        "name": "unknown",
+        "vm_last_result": 10,
+        "worker_status": 10,
+        "buffer_guards_intact": true,
+        "output_sha256": "843d8a217217c238189d165f1705fc600c09f86ee358d1a28c205a6a80632e3d",
+        "expected_output_sha256": "843d8a217217c238189d165f1705fc600c09f86ee358d1a28c205a6a80632e3d",
+        "bridge_loaded": true,
+        "installer_export_invoked": true
+      },
+      {
+        "name": "missing-component",
+        "vm_last_result": -1,
+        "worker_status": -1,
+        "buffer_guards_intact": true,
+        "output_sha256": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
+        "expected_output_sha256": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
+        "bridge_loaded": false,
+        "installer_export_invoked": false
+      }
+    ],
+    "backend_sha256": "007b0d97770a1f17ebe997ebbf69d71fe1203b48bd1cec0cd650b77c8a4dc71d",
+    "backend_note": "The isolated native-handler cases use the original worker build; the direct adapter suite separately identifies its worker with the top-level backend_sha256."
+  },
+  "evidence_note": "107 direct adapter ABI/lifecycle checks use the public worker and a new native bridge; 24 additional checks execute the genuine enabled InstallShield CallDLLFx handler against isolated copies, including supported builds, unknown bytes and a missing DLL. Private raw receipts are retained. No game or installer wizard is launched."
+}
