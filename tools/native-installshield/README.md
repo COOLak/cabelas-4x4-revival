@@ -41,6 +41,12 @@ neither tool reconstructs the original script source. Run it with Python 3.9+:
 python build_script.py ORIGINAL_SETUP_INS OUTPUT_SETUP_INS --report SCRIPT_REPORT.json
 ```
 
+At each launch the workflow reads `Path1` from
+`HKCU\Software\Activision Value\Cabela's Off-road Adventure` to prefill the
+destination dialog. A missing, empty or nonexistent registered directory uses
+`C:\Games` as a fallback; the user can choose a different existing game folder.
+No game registry values are written.
+
 The workflow shows the original welcome and destination dialogs, patches that
 selected destination through the bridge, and reaches the original finish dialog
 only after verified success. Cancellation exits; errors give a diagnostic and
@@ -55,7 +61,14 @@ including a real x86 stdcall host, both supported executable builds and synchron
 propagation. Static checks confirmed the authored script framing, checksum,
 allocated variables, dialog bindings and unchanged original dialog library.
 
-**Complete wizard execution remains unverified.** A private-desktop silent test
+**Complete wizard execution remains unverified.** A user-run wizard reported
+a native component load failure despite the DLL being present. The authored
+script now records its real source/support directories, attempted DLL path and
+`UseDLL` result in `patch-loader.ini`, and displays the path and return code in
+an OK/error dialog. This is diagnostic instrumentation; a loader repair has not
+yet been established.
+
+ A private-desktop silent test
 without administrator rights stopped before the script with legacy Error 432.
 The installed Microsoft launcher normally requests elevation. The testing did
 not approve that prompt, replace the system uninstaller, alter compatibility

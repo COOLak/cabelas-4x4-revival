@@ -27,3 +27,14 @@ The earlier failure needs further attribution of the lock result, surface state,
 The faulty boundary checks are present in the original official 1.2 executable. The captured failure occurred with a modern graphics provider and a high-resolution screen. That establishes an original game defect exposed in that environment; it does not establish the crash frequency on Windows XP, historical graphics drivers, or every modern wrapper.
 
 Memory layout and protection can determine whether an invalid read immediately raises an exception, silently samples unrelated data, or appears harmless. A lower resolution or a different wrapper may change how the defect appears without correcting its bounds.
+
+## Native installer component loading
+
+A private original-InstallShield wizard reported a native support-component
+load failure. The exact support DLL loads and exposes its entry point in an
+independent 32-bit process, and static checks confirm the script framing,
+load-result comparison and sufficient path buffers. This excludes those
+specific explanations but does not identify the wizard failure. The authored
+script collects its actual runtime paths and loader return code; full wizard
+completion and a causal repair remain pending. The public Python patcher
+provides the separately verified apply, verify and rollback route.

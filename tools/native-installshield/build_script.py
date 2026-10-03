@@ -67,12 +67,12 @@ def build(original):
     assert hdr['number_slots'] == 47 and len(hdr['prototypes']) == 105
 
     # Allocate new globals after the original script/library globals.
-    dll_path, ini_path, error_text = 35, 36, 37
+    dll_path, ini_path, error_text, loader_log = 35, 36, 37, 38
     opt1, opt2, result = 47, 48, 49
     title = "Cabela's 4x4 Community Patch 1.2.1"
     welcome = ('This patch fixes the depth-buffer boundary error in version 1.2. '
                'It modifies your installed executable and preserves its language. '
-               'A supported 1.2 build is required. '
+               'A supported version 1.2 executable is required. '
                'Close the game and its launcher before continuing.')
     main = b''.join([
         frame(
@@ -88,6 +88,18 @@ def build(original):
             opcode(0x125, dest_string(ini_path), source_string(10), string('patch-result.ini')),
             opcode(0x21, dest_number(opt1), integer(0)),
             opcode(0x21, dest_number(opt2), integer(0)),
+            # Read the original game's HKCU Path1 without changing its registry key.
+            # These original scratch slots are unused by the retained SDK dialogs.
+            opcode(0x13, dest_string(34), string('')),
+            opcode(0x110, integer(0x80000001)),
+            opcode(0x152, string("Software\\Activision Value\\Cabela's Off-road Adventure"),
+                   string('Path1'), dest_number(44), dest_string(34), dest_number(45)),
+            branch(1, 1, source_number(0), integer(0)),
+            opcode(0x2f, source_string(34)),
+            branch(1, 5, source_number(0), integer(0)),
+            opcode(0x0c, source_string(34)),
+            branch(1, 1, source_number(0), integer(0)),
+            opcode(0x13, dest_string(3), source_string(34)),
             goto(1)),
         frame(
             call(6, 232, string(title), string(welcome)),
@@ -103,8 +115,16 @@ def build(original):
             branch(8, 6, source_number(result), integer(1)),
             goto(3)),
         frame(
+            # Record the real engine paths before loading the component. The
+            # extracted source directory owns this per-run diagnostic file.
+            opcode(0x125, dest_string(loader_log), source_string(0), string('patch-loader.ini')),
+            opcode(0x25, source_string(loader_log), string('Loader'), string('SRCDIR'), source_string(0)),
+            opcode(0x25, source_string(loader_log), string('Loader'), string('SUPPORTDIR'), source_string(10)),
+            opcode(0x25, source_string(loader_log), string('Loader'), string('dll_path'), source_string(dll_path)),
             opcode(0xb2, source_string(dll_path)),
             opcode(0x21, dest_number(result), source_number(0)),
+            opcode(0x6e, dest_string(error_text), source_number(result)),
+            opcode(0x25, source_string(loader_log), string('Loader'), string('UseDLL_result'), source_string(error_text)),
             branch(5, 1, source_number(result), integer(0)),
             goto(4)),
         frame(
@@ -115,14 +135,17 @@ def build(original):
             goto(7)),
         frame(
             branch(8, 5, source_number(4), integer(3)),
-            opcode(0x2a, string('The native patch component could not be loaded. '
-                                'Extract the whole installer folder before opening SETUP.EXE.'), integer(4)),
+            opcode(0x124, dest_string(error_text), string('\nUseDLL result: '), source_string(error_text)),
+            opcode(0x124, dest_string(error_text), source_string(dll_path), source_string(error_text)),
+            opcode(0x124, dest_string(error_text),
+                   string('The native patch component could not be loaded.\nDLL: '), source_string(error_text)),
+            opcode(0x2a, source_string(error_text), integer(0x10)),
             goto(8)),
         frame(
             branch(8, 5, source_number(4), integer(3)),
             opcode(0x13, dest_string(error_text), string('The selected game could not be patched.')),
             opcode(0x26, source_string(ini_path), string('PatchResult'), string('error'), dest_string(error_text)),
-            opcode(0x2a, source_string(error_text), integer(4)),
+            opcode(0x2a, source_string(error_text), integer(0x10)),
             goto(2)),
         frame(
             call(30, 749, string('Patch installed'),
@@ -141,9 +164,9 @@ def build(original):
     header = bytearray(original[:hdr['code_offset']])
     struct.pack_into('<H', header, hdr['prototype_count_offset'], 106)
     struct.pack_into('<H', header, hdr['number_slots_offset'], 50)
-    struct.pack_into('<H', header, hdr['string_slots_offset'], 38)
+    struct.pack_into('<H', header, hdr['string_slots_offset'], 39)
     slots_end = hdr['string_slots_offset'] + 2 + 35 * 2
-    header[slots_end:slots_end] = word(65535) * 3
+    header[slots_end:slots_end] = word(65535) * 4
     out = header + proto + main + opaque + original[footer_start:]
     struct.pack_into('<I', out, 8, sum(out[12:]) & 0xffffffff)
     report = dict(
@@ -151,7 +174,7 @@ def build(original):
         original_main_events=9, authored_main_events=9, event_count=776,
         retained_event_ids=[9, 775], retained_library_sha256=LIBRARY_HASH,
         retained_library_bytes=len(opaque), added_dll_prototype=105,
-        string_slots=38, number_slots=50, checksum=struct.unpack_from('<I', out, 8)[0],
+        string_slots=39, number_slots=50, checksum=struct.unpack_from('<I', out, 8)[0],
         game_executable_payload=False, game_registry_writes=False,
         game_launch=False, command_wrapper_required=False,
     )
