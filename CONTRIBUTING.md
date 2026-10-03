@@ -21,7 +21,7 @@ Crash dumps can contain private process memory, paths, and account information. 
 - Keep documentation, comments, issue descriptions, and pull requests in English.
 - Target a specific failure and identify whether the game, wrapper, configuration, or another layer caused it.
 - Record the exact supported baseline hash, expected original bytes, replacement bytes, and resulting executable hash.
-- For multiple builds, identify each original and patched executable separately. Preserve each build's installed language and require its own verified rollback backup; include selection and cross-build backup regression checks.
+- For multiple builds, identify each original and patched executable separately. Preserve each build's existing content and require its own verified rollback backup; include selection and cross-build backup regression checks.
 - Explain control flow, register preservation, stack cleanup, and any changes to valid inputs when editing machine code.
 - Add a meaningful regression check that fails before the fix and passes after it. Verify nearby valid cases as well as the failing boundary.
 - Label static analysis, emulated execution, and real gameplay validation separately.
@@ -31,6 +31,6 @@ Use `fixes/001-depth-buffer-bounds/` and its [forensic report](docs/forensics/de
 
 ## Keep the repository distributable
 
-Submit patch descriptions and original project code. Do not commit proprietary game executables, game assets, raw crash dumps, translated game content, third-party wrapper binaries, or files containing local account information. The repository's license applies to project contributions; it does not grant rights to redistribute the game.
+Submit patch descriptions and original project code. Do not commit proprietary game executables, game assets, raw crash dumps, third-party wrapper binaries, or files containing local account information. The repository's license applies to project contributions; it does not grant rights to redistribute the game.
 
 Before opening a pull request, run the project's checks described in its test configuration and review the staged files for accidental binary or personal-data additions. Describe the resulting behavior and the evidence that supports it.

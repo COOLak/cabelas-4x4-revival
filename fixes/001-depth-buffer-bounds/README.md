@@ -1,6 +1,6 @@
 # 001: Depth-buffer bounds
 
-Community version: **1.2.1**. Base version: official English **1.2**, released
+Community version: **1.2.1**. Base version: official **1.2**, released
 July 12, 2001. This fix is unofficial.
 
 A projected visual-effect point can land exactly on the screen's width or
@@ -29,13 +29,13 @@ the function's saved registers.
 
 Filename: `4x4 Adventure.exe`. The patcher automatically selects the exact
 supported build by its size and SHA-256 in either original or patched state.
-Its English interface preserves the installed game's language.
+Its English interface preserves the installed build's existing content.
 
-### Official English 1.2
+### Official 1.2
 
 Size: **749568 bytes**.
 
-Original official English 1.2 SHA-256:
+Original official 1.2 SHA-256:
 
 ```text
 e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c
@@ -47,10 +47,12 @@ Patched community 1.2.1 SHA-256:
 9bdb9bfaa4d91f12bc81c0db1a05765c03538fb81f0a523c978733902ba2d3c6
 ```
 
-### Russian localization 315-r4 on official 1.2
+### Compatible 1.2 variant
 
-Size: **757760 bytes**. Its bounds-test code matches the English baseline;
-the same code edits and PE checksum update preserve its translated content.
+Size: **757760 bytes**. Its bounds-test code matches the official baseline;
+the same code edits and PE checksum update preserve its other content.
+Build ID: `compatible-1-2-variant`. Language metadata: unspecified (`und`).
+This compatibility identity is not an official release designation.
 
 Original SHA-256:
 
@@ -64,9 +66,9 @@ Patched SHA-256:
 a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf
 ```
 
-Other versions, modified executables and unlisted localized builds fail the
-identity check. The repository distributes English patch instructions and
-tooling; it includes no localization files or original/patched game executable.
+Executable identities not listed in the manifest fail the identity check.
+The repository distributes English patch instructions and tooling, without
+game assets or original/patched game executables.
 
 ## Apply, verify, and roll back
 
@@ -113,7 +115,7 @@ See [manifest.json](manifest.json) for machine-readable offsets and identities.
 ## Manifest format
 
 The bundled schema-version-2 manifest lists each supported build's ID,
-English description, language code, and original/patched identities in
+human-readable description, language metadata, and original/patched identities in
 `builds`. Byte changes and the PE-checksum policy are shared. Build IDs and
 all executable hashes must be unique, and every change must fit every build.
 Selection requires both the size and hash; it does not infer a build from

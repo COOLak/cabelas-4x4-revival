@@ -1,6 +1,6 @@
 {
   "backend": "Cabela4x4PatchBackend",
-  "backend_sha256": "007b0d97770a1f17ebe997ebbf69d71fe1203b48bd1cec0cd650b77c8a4dc71d",
+  "backend_sha256": "9a9dbf3a8a2d515c25646ddf7175bbcf4d7d95539518e3957396b79975e460aa",
   "result": "passed",
   "check_count": 165,
   "checks": [
@@ -9,7 +9,7 @@
       "passed": true
     },
     {
-      "check": "Russian fixture exact original identity",
+      "check": "compatible variant fixture exact original identity",
       "passed": true
     },
     {
@@ -77,7 +77,7 @@
       "passed": true
     },
     {
-      "check": "en: recognized language preserved",
+      "check": "en: recognized build marker preserved",
       "passed": true
     },
     {
@@ -193,167 +193,167 @@
       "passed": true
     },
     {
-      "check": "ru-verify-original: exit",
+      "check": "variant-verify-original: exit",
       "passed": true
     },
     {
-      "check": "ru-verify-original: JSON exit",
+      "check": "variant-verify-original: JSON exit",
       "passed": true
     },
     {
-      "check": "ru-verify-original: INI exit",
+      "check": "variant-verify-original: INI exit",
       "passed": true
     },
     {
-      "check": "ru-verify-original: INI status",
+      "check": "variant-verify-original: INI status",
       "passed": true
     },
     {
-      "check": "ru-verify-original: ANSI profile compatibility",
+      "check": "variant-verify-original: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru: original recognized",
+      "check": "variant: original recognized",
       "passed": true
     },
     {
-      "check": "ru-apply: exit",
+      "check": "variant-apply: exit",
       "passed": true
     },
     {
-      "check": "ru-apply: JSON exit",
+      "check": "variant-apply: JSON exit",
       "passed": true
     },
     {
-      "check": "ru-apply: INI exit",
+      "check": "variant-apply: INI exit",
       "passed": true
     },
     {
-      "check": "ru-apply: INI status",
+      "check": "variant-apply: INI status",
       "passed": true
     },
     {
-      "check": "ru-apply: ANSI profile compatibility",
+      "check": "variant-apply: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru: output exact SHA",
+      "check": "variant: output exact SHA",
       "passed": true
     },
     {
-      "check": "ru: recognized language preserved",
+      "check": "variant: recognized build marker preserved",
       "passed": true
     },
     {
-      "check": "ru: INI Unicode directory",
+      "check": "variant: INI Unicode directory",
       "passed": true
     },
     {
-      "check": "ru: original verified backup",
+      "check": "variant: original verified backup",
       "passed": true
     },
     {
-      "check": "ru: only two opcode/checksum differences",
+      "check": "variant: only two opcode/checksum differences",
       "passed": true
     },
     {
-      "check": "ru: checksum matches independent reference",
+      "check": "variant: checksum matches independent reference",
       "passed": true
     },
     {
-      "check": "ru-verify-patched: exit",
+      "check": "variant-verify-patched: exit",
       "passed": true
     },
     {
-      "check": "ru-verify-patched: JSON exit",
+      "check": "variant-verify-patched: JSON exit",
       "passed": true
     },
     {
-      "check": "ru-verify-patched: INI exit",
+      "check": "variant-verify-patched: INI exit",
       "passed": true
     },
     {
-      "check": "ru-verify-patched: INI status",
+      "check": "variant-verify-patched: INI status",
       "passed": true
     },
     {
-      "check": "ru-verify-patched: ANSI profile compatibility",
+      "check": "variant-verify-patched: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru-repeat-apply: exit",
+      "check": "variant-repeat-apply: exit",
       "passed": true
     },
     {
-      "check": "ru-repeat-apply: JSON exit",
+      "check": "variant-repeat-apply: JSON exit",
       "passed": true
     },
     {
-      "check": "ru-repeat-apply: INI exit",
+      "check": "variant-repeat-apply: INI exit",
       "passed": true
     },
     {
-      "check": "ru-repeat-apply: INI status",
+      "check": "variant-repeat-apply: INI status",
       "passed": true
     },
     {
-      "check": "ru-repeat-apply: ANSI profile compatibility",
+      "check": "variant-repeat-apply: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru: repeat apply unchanged",
+      "check": "variant: repeat apply unchanged",
       "passed": true
     },
     {
-      "check": "ru-rollback: exit",
+      "check": "variant-rollback: exit",
       "passed": true
     },
     {
-      "check": "ru-rollback: JSON exit",
+      "check": "variant-rollback: JSON exit",
       "passed": true
     },
     {
-      "check": "ru-rollback: INI exit",
+      "check": "variant-rollback: INI exit",
       "passed": true
     },
     {
-      "check": "ru-rollback: INI status",
+      "check": "variant-rollback: INI status",
       "passed": true
     },
     {
-      "check": "ru-rollback: ANSI profile compatibility",
+      "check": "variant-rollback: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru: rollback original exact SHA",
+      "check": "variant: rollback original exact SHA",
       "passed": true
     },
     {
-      "check": "ru-repeat-rollback: exit",
+      "check": "variant-repeat-rollback: exit",
       "passed": true
     },
     {
-      "check": "ru-repeat-rollback: JSON exit",
+      "check": "variant-repeat-rollback: JSON exit",
       "passed": true
     },
     {
-      "check": "ru-repeat-rollback: INI exit",
+      "check": "variant-repeat-rollback: INI exit",
       "passed": true
     },
     {
-      "check": "ru-repeat-rollback: INI status",
+      "check": "variant-repeat-rollback: INI status",
       "passed": true
     },
     {
-      "check": "ru-repeat-rollback: ANSI profile compatibility",
+      "check": "variant-repeat-rollback: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru: repeat rollback unchanged",
+      "check": "variant: repeat rollback unchanged",
       "passed": true
     },
     {
-      "check": "ru: profile/settings untouched",
+      "check": "variant: profile/settings untouched",
       "passed": true
     },
     {
@@ -585,43 +585,43 @@
       "passed": true
     },
     {
-      "check": "bridge-ru-apply: native stdcall return (actual 0)",
+      "check": "bridge-variant-apply: native stdcall return (actual 0)",
       "passed": true
     },
     {
-      "check": "ru: bridge waits for exact patched output",
+      "check": "variant: bridge waits for exact patched output",
       "passed": true
     },
     {
-      "check": "ru: bridge completed receipt",
+      "check": "variant: bridge completed receipt",
       "passed": true
     },
     {
-      "check": "bridge-ru-idempotent: native stdcall return (actual 0)",
+      "check": "bridge-variant-idempotent: native stdcall return (actual 0)",
       "passed": true
     },
     {
-      "check": "bridge-ru-rollback: exit",
+      "check": "bridge-variant-rollback: exit",
       "passed": true
     },
     {
-      "check": "bridge-ru-rollback: JSON exit",
+      "check": "bridge-variant-rollback: JSON exit",
       "passed": true
     },
     {
-      "check": "bridge-ru-rollback: INI exit",
+      "check": "bridge-variant-rollback: INI exit",
       "passed": true
     },
     {
-      "check": "bridge-ru-rollback: INI status",
+      "check": "bridge-variant-rollback: INI status",
       "passed": true
     },
     {
-      "check": "bridge-ru-rollback: ANSI profile compatibility",
+      "check": "bridge-variant-rollback: ANSI profile compatibility",
       "passed": true
     },
     {
-      "check": "ru: bridge-backed install reversible",
+      "check": "variant: bridge-backed install reversible",
       "passed": true
     },
     {
@@ -661,11 +661,11 @@
       "passed": true
     },
     {
-      "check": "installed Russian input unchanged",
+      "check": "installed compatible variant input unchanged",
       "passed": true
     }
   ],
-  "fixture_directory": "c4x4-test-e29e454774f8",
+  "fixture_directory": "c4x4-test-38d0a640e91c",
   "game_executed": false,
   "audio_executed": false,
   "gui_opened": false,
@@ -673,10 +673,13 @@
   "native_bridge_tested": true,
   "tested_languages": [
     "en",
-    "ru"
+    "und"
   ],
   "source_hashes": {
     "en": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
-    "ru": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765"
-  }
+    "und": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765"
+  },
+  "public_source_sha256": "70653c7cbcd4be6b2d5beb014eef2cc51ac80ff33b3e3372467cb0ac92ac2e5b",
+  "native_bridge_sha256": "e86411dd81464dec6229f78b837f0ab6a562be9f44439667303625cb4ff4b1b1",
+  "public_evidence_note": "Fresh headless lifecycle tests execute the newly compiled public PatchBackend.cs, including its neutral und build marker. Public fixture names are normalized to variant/und; all 165 outcomes and exact executable identities are retained. The previously verified private native bridge supplies the x86 stdcall test path. Private source, worker, bridge and harness hashes were checked unchanged."
 }

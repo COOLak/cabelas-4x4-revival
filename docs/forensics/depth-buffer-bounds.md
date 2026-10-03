@@ -4,7 +4,7 @@
 |---|---|
 | Fix ID | `001-depth-buffer-bounds` |
 | Community release | `1.2.1` |
-| Supported builds | Official English 1.2 and Russian localization 315-r4 |
+| Supported builds | Official 1.2 and a compatible 1.2 variant |
 | Faulting instruction | VA `0x0040D2F4`, RVA and file offset `0xD2F4` |
 | Correction | Two `JG` instructions become `JGE` |
 | Verification | Static analysis and isolated x86 replay; gameplay pending |
@@ -74,12 +74,12 @@ Caller `0x0040D800` projects the effect point and invokes this depth test at `0x
 
 ## Original defect, modern manifestation
 
-The complete bounds-test routine, its surface setup, and its dimension initialization were compared against the preserved official English 1.2 baseline. The faulty instructions are present in that original executable.
+The complete bounds-test routine, its surface setup, and its dimension initialization were compared against the preserved official 1.2 baseline. The faulty instructions are present in that original executable.
 
-The same routines are byte-for-byte identical in the supported Russian localization 315-r4. The patcher identifies each complete executable separately and applies the same two code changes to the installed build. Its language-specific content remains intact; localization files are not part of this repository.
+The same routines are byte-for-byte identical in the supported compatible 1.2 variant. The patcher identifies each complete executable separately and applies the same two code changes to the installed build, preserving its other content. The variant is identified by its binary hash and is not presented as an official release.
 
 ```text
-Official English 1.2 SHA-256
+Official 1.2 SHA-256
 e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c
 ```
 

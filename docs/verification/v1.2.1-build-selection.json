@@ -60,57 +60,57 @@
       "exit_code": 2
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "verify",
       "state": "original",
       "exit_code": 0
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "apply",
       "state": "patched",
       "exit_code": 0
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "apply",
       "state": "patched",
       "exit_code": 0
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "verify",
       "state": "patched",
       "exit_code": 0
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "rollback",
       "state": "original",
       "exit_code": 0
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "rollback",
       "state": "original",
       "exit_code": 0
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "apply",
       "case": "other_build_backup_refused",
       "exit_code": 2
     },
     {
-      "build": "russian-315-r4",
-      "language": "ru",
+      "build": "compatible-1-2-variant",
+      "language": "und",
       "action": "rollback",
       "case": "other_build_backup_refused",
       "exit_code": 2

@@ -20,11 +20,11 @@
       }
     },
     {
-      "id": "russian-315-r4",
-      "name": "Russian localization 315-r4 on official 1.2",
-      "language": "ru",
+      "id": "compatible-1-2-variant",
+      "name": "Compatible 1.2 variant",
+      "language": "und",
       "source": {
-        "version": "1.2 / localization 315-r4",
+        "version": "1.2",
         "sha256": "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765",
         "size": 757760
       },

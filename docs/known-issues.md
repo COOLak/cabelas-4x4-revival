@@ -8,7 +8,7 @@ The patch addresses a specific out-of-bounds read. It does not establish that ev
 
 ## Other executable builds
 
-The first manifest targets one exact official English 1.2 executable. A matching version label with a different SHA-256 is a different baseline and requires its own review. Modified and localized builds are outside this public release's support matrix.
+The manifest identifies the exact official 1.2 executable and one compatible 1.2 variant, including their original and patched states. These binary identities define this release's support matrix. A matching version label with a different SHA-256 is a different baseline and requires its own review.
 
 ## Cached depth-surface pointer
 
@@ -24,6 +24,6 @@ The earlier failure needs further attribution of the lock result, surface state,
 
 ## Original operating systems and wrappers
 
-The faulty boundary checks are present in the original English executable. The captured failure occurred with a modern graphics provider and a high-resolution screen. That establishes an original game defect exposed in that environment; it does not establish the crash frequency on Windows XP, historical graphics drivers, or every modern wrapper.
+The faulty boundary checks are present in the original official 1.2 executable. The captured failure occurred with a modern graphics provider and a high-resolution screen. That establishes an original game defect exposed in that environment; it does not establish the crash frequency on Windows XP, historical graphics drivers, or every modern wrapper.
 
 Memory layout and protection can determine whether an invalid read immediately raises an exception, silently samples unrelated data, or appears harmless. A lower resolution or a different wrapper may change how the defect appears without correcting its bounds.

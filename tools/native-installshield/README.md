@@ -2,7 +2,7 @@
 
 These original project sources let a privately rebuilt InstallShield 5 wizard
 patch its chosen destination's existing executable instead of carrying a fixed
-English or Russian game executable. The supported identities and two byte edits
+game executable. The supported identities and two byte edits
 are the same as the Python patcher.
 
 `PatchBridge.c` exports a native x86 `int __stdcall PatchGame(const char *,
@@ -51,7 +51,7 @@ The private package uses the original 16-bit launcher and already-installed
 Microsoft support. It contains no command-file preparation step.
 
 The native interface and worker passed [165 isolated-copy checks](../../docs/verification/v1.2.1-native-backend.json),
-including a real x86 stdcall host, both language builds and synchronous exit-code
+including a real x86 stdcall host, both supported executable builds and synchronous exit-code
 propagation. Static checks confirmed the authored script framing, checksum,
 allocated variables, dialog bindings and unchanged original dialog library.
 

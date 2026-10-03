@@ -18,7 +18,7 @@
 
 ## The first repair
 
-**Community patch 1.2.1 fixes an original depth-buffer boundary error and preserves your installed game language.** The defect exists in official English 1.2 and the supported Russian localization 315-r4. A visual effect projected onto the first row beyond the bottom of the screen could make the game read outside its depth buffer and crash. The same mistake exists at the right edge.
+**Community patch 1.2.1 fixes an original depth-buffer boundary error and preserves your installed game's content.** The defect exists in official 1.2 and the supported compatible 1.2 variant. A visual effect projected onto the first row beyond the bottom of the screen could make the game read outside its depth buffer and crash. The same mistake exists at the right edge.
 
 The fix changes two conditional-branch bytes. Interior screen coordinates keep their existing behavior; out-of-screen coordinates take the game's existing “do not draw this effect” path.
 
@@ -28,7 +28,7 @@ The fix changes two conditional-branch bytes. Interior screen coordinates keep t
 | Root cause | Original bounds checks allowed coordinates equal to width or height |
 | Fix | Reject equality at both edges before accessing the depth buffer |
 | Offline validation | Actual x86 routine replay: [**61 case pairs, 177 checks**](docs/verification/v1.2.1-replay.json) |
-| Build preservation | [**16 isolated-copy checks**](docs/verification/v1.2.1-build-selection.json) across both supported languages |
+| Build preservation | [**16 isolated-copy checks**](docs/verification/v1.2.1-build-selection.json) across both supported executable builds |
 | Gameplay validation | **Pending**; the game and its graphics driver were not launched for verification |
 
 Read the [forensic report](docs/forensics/depth-buffer-bounds.md), [fix specification](fixes/001-depth-buffer-bounds/README.md), and [known issues](docs/known-issues.md).
@@ -44,7 +44,7 @@ python src/patcher.py apply --game-dir "C:\Games\Cabela4x4"
 python src/patcher.py verify --game-dir "C:\Games\Cabela4x4"
 ```
 
-Replace the example folder with the folder containing `4x4 Adventure.exe`. The patcher automatically recognizes its exact size and SHA-256, reports the selected build and language, and retains that executable as the rollback backup. English stays English; Russian stays Russian. It changes the two bounds-check bytes and PE checksum in your existing executable, preserving its other content and the installation's resources. An unknown executable needs a separate reviewed manifest.
+Replace the example folder with the folder containing `4x4 Adventure.exe`. The patcher automatically recognizes its exact size and SHA-256, reports the selected build identity, and retains that executable as the rollback backup. It changes the two bounds-check bytes and PE checksum in your existing executable, preserving its other content and the installation's resources. An unknown executable needs a separate reviewed manifest.
 
 To restore the pre-patch executable:
 
@@ -56,18 +56,18 @@ python src/patcher.py rollback --game-dir "C:\Games\Cabela4x4"
 
 | Executable | Build | Language | Original SHA-256 |
 |---|---|---|---|
-| `4x4 Adventure.exe` | Official 1.2 | English | `e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c` |
-| `4x4 Adventure.exe` | Localization 315-r4 on official 1.2 | Russian | `ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765` |
+| `4x4 Adventure.exe` | Official 1.2 | English (`en`) | `e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c` |
+| `4x4 Adventure.exe` | Compatible 1.2 variant (`compatible-1-2-variant`) | Unspecified (`und`) | `ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765` |
 
-The version number or language alone is insufficient: different releases or other modifications can produce different binaries. See the machine-readable [manifest](fixes/001-depth-buffer-bounds/manifest.json) for original and patched identities. Already-patched builds are recognized too. Rollback requires the original backup for that exact build; a backup from another language is refused.
+The version number or descriptive metadata alone is insufficient: different releases or other modifications can produce different binaries. See the machine-readable [manifest](fixes/001-depth-buffer-bounds/manifest.json) for original and patched identities. Already-patched builds are recognized too. Rollback requires the original backup for that exact build; a backup from another build is refused.
 
-The Russian entry contains identification hashes and patch instructions only. This repository and its releases do not distribute the localization, translated assets, or game executables.
+The compatible variant is identified by its exact hash; it is not described as an official release. This repository and its releases contain identification metadata and patch instructions, without game assets or executables.
 
 ### Original installer support
 
 The [native installer sources](tools/native-installshield/README.md) support a
 private rebuild of the original InstallShield wizard that patches the selected
-folder's executable and preserves either supported language. Its worker and real
+folder's executable and preserves the selected build's existing content. Its worker and real
 x86 interface passed 165 isolated-copy checks. Full wizard completion remains
 unverified because a silent test without elevation stopped at legacy Error 432
 before the patch script. The original installer components are not published.

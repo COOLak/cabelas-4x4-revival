@@ -72,7 +72,7 @@ def build(original):
     title = "Cabela's 4x4 Community Patch 1.2.1"
     welcome = ('This patch fixes the depth-buffer boundary error in version 1.2. '
                'It modifies your installed executable and preserves its language. '
-               'An English or Russian supported build is required. '
+               'A supported 1.2 build is required. '
                'Close the game and its launcher before continuing.')
     main = b''.join([
         frame(

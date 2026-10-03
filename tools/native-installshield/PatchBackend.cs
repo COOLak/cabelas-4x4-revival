@@ -27,7 +27,7 @@ namespace Cabela4x4Patch121 {
             new Build("en", 749568,
                 "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
                 "9bdb9bfaa4d91f12bc81c0db1a05765c03538fb81f0a523c978733902ba2d3c6"),
-            new Build("ru", 757760,
+            new Build("und", 757760,
                 "ab517697d459912a924f8502b1be5b38d69c3bd4e8a3011689c5eca16077f765",
                 "a54624101f8b04ed5539703ea558705483fc06974c1ca00eaf0964726d408faf")
         };

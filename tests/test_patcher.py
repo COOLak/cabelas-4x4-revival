@@ -52,15 +52,15 @@ def fixture():
 
 def selection_fixture():
     """Two same-size synthetic builds with different embedded language markers."""
-    english, english_patched, single = fixture()
-    marker = b"SYNTHETIC_RUSSIAN"
-    russian = bytearray(english)
-    russian[0x200:0x200 + len(marker)] = marker
-    russian_patched = bytearray(russian)
-    russian_patched[0x300] = russian_patched[0x308] = 0x7D
-    struct.pack_into("<I", russian_patched, 0xD8, patcher.pe_checksum(bytes(russian_patched)))
-    originals = {"en": english, "ru": bytes(russian)}
-    patched = {"en": english_patched, "ru": bytes(russian_patched)}
+    baseline, baseline_patched, single = fixture()
+    marker = b"SYNTHETIC_VARIANT"
+    variant = bytearray(baseline)
+    variant[0x200:0x200 + len(marker)] = marker
+    variant_patched = bytearray(variant)
+    variant_patched[0x300] = variant_patched[0x308] = 0x7D
+    struct.pack_into("<I", variant_patched, 0xD8, patcher.pe_checksum(bytes(variant_patched)))
+    originals = {"en": baseline, "und": bytes(variant)}
+    patched = {"en": baseline_patched, "und": bytes(variant_patched)}
     manifest = {key: copy.deepcopy(single[key]) for key in
                 ("patch_version", "target_file", "checksum", "changes")}
     manifest.update(schema_version=2, builds=[
@@ -68,7 +68,7 @@ def selection_fixture():
          "language": language,
          "source": {"sha256": patcher.digest(originals[language]), "size": len(originals[language])},
          "patched": {"sha256": patcher.digest(patched[language]), "size": len(patched[language])}}
-        for language in ("en", "ru")
+        for language in ("en", "und")
     ])
     return originals, patched, manifest
 
@@ -324,7 +324,7 @@ class BuildSelectionTests(unittest.TestCase):
 
     def test_automatic_selection_preserves_each_language_through_full_lifecycle(self):
         resources = self.game / "synthetic-language-resource.txt"
-        for language in ("en", "ru"):
+        for language in ("en", "und"):
             with self.subTest(language=language):
                 if self.backup.exists():
                     self.backup.unlink()
@@ -348,7 +348,7 @@ class BuildSelectionTests(unittest.TestCase):
                     self.assertEqual(resources.read_bytes(), ("Resource stays " + language).encode("ascii"))
 
     def test_verify_identifies_both_languages_in_both_states_without_writing(self):
-        for language in ("en", "ru"):
+        for language in ("en", "und"):
             for state, collection in (("original", self.originals), ("patched", self.patched)):
                 with self.subTest(language=language, state=state):
                     self.target.write_bytes(collection[language])
@@ -359,7 +359,7 @@ class BuildSelectionTests(unittest.TestCase):
                     self.assertFalse(self.backup.exists())
 
     def test_default_cli_selects_build_without_a_manifest_option(self):
-        self.target.write_bytes(self.originals["ru"])
+        self.target.write_bytes(self.originals["und"])
         with mock.patch.object(patcher, "DEFAULT_MANIFEST", self.manifest_file):
             for action, state in (("apply", "patched"), ("verify", "patched"), ("rollback", "original")):
                 output = io.StringIO()
@@ -368,11 +368,11 @@ class BuildSelectionTests(unittest.TestCase):
                 self.assertEqual(code, 0)
                 result = json.loads(output.getvalue())
                 self.assertEqual((result["build"], result["language"], result["state"]),
-                                 ("synthetic-ru", "ru", state))
+                                 ("synthetic-und", "und", state))
 
     def test_backup_from_other_supported_language_is_refused(self):
         self.backup.parent.mkdir()
-        for language, other in (("en", "ru"), ("ru", "en")):
+        for language, other in (("en", "und"), ("und", "en")):
             for state, collection, actions in (
                 ("original", self.originals, ("apply",)),
                 ("patched", self.patched, ("apply", "rollback")),
@@ -387,7 +387,7 @@ class BuildSelectionTests(unittest.TestCase):
                         self.assertEqual(self.snapshot(), before)
 
     def test_unknown_same_size_build_is_refused_without_writes(self):
-        modified = bytearray(self.originals["ru"])
+        modified = bytearray(self.originals["und"])
         modified[-1] ^= 1
         self.target.write_bytes(modified)
         before = self.snapshot()
@@ -398,28 +398,28 @@ class BuildSelectionTests(unittest.TestCase):
         self.assertFalse(self.backup.parent.exists())
 
     def test_identity_requires_size_as_well_as_hash(self):
-        self.target.write_bytes(self.originals["ru"])
+        self.target.write_bytes(self.originals["und"])
         bad = copy.deepcopy(self.manifest)
         bad["builds"][1]["source"]["size"] += 1
         with self.assertRaises(patcher.PatchError):
             patcher.operate("apply", self.game, bad)
-        self.assertEqual(self.target.read_bytes(), self.originals["ru"])
+        self.assertEqual(self.target.read_bytes(), self.originals["und"])
         self.assertFalse(self.backup.parent.exists())
 
     def test_supported_build_order_does_not_change_selection(self):
         reversed_manifest = copy.deepcopy(self.manifest)
         reversed_manifest["builds"].reverse()
-        for language in ("en", "ru"):
+        for language in ("en", "und"):
             self.assertEqual(patcher.select_build(self.originals[language], reversed_manifest)["language"], language)
             self.assertEqual(patcher.make_patched(self.originals[language], reversed_manifest), self.patched[language])
 
     def test_wrong_output_identity_for_selected_build_is_refused_before_backup(self):
-        self.target.write_bytes(self.originals["ru"])
+        self.target.write_bytes(self.originals["und"])
         bad = copy.deepcopy(self.manifest)
         bad["builds"][1]["patched"]["sha256"] = "0" * 64
         with self.assertRaises(patcher.PatchError):
             patcher.operate("apply", self.game, bad)
-        self.assertEqual(self.target.read_bytes(), self.originals["ru"])
+        self.assertEqual(self.target.read_bytes(), self.originals["und"])
         self.assertFalse(self.backup.parent.exists())
 
     def test_ambiguous_or_invalid_build_metadata_is_rejected(self):
@@ -455,7 +455,7 @@ class BuildSelectionTests(unittest.TestCase):
         bad = copy.deepcopy(self.manifest)
         bad["builds"].append(copy.deepcopy(bad["builds"][1]))
         with self.assertRaises(patcher.PatchError):
-            patcher.select_build(self.originals["ru"], bad)
+            patcher.select_build(self.originals["und"], bad)
 
 
 class WindowsProcessTests(unittest.TestCase):
