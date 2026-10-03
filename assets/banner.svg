@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
+  <title id="title">Cabela's 4x4 Revival</title>
+  <desc id="desc">An olive and orange expedition field-manual cover with topographic contours, pine forest, and an original off-road vehicle silhouette.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17261f"/>
+      <stop offset="1" stop-color="#344535"/>
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#c8d0ad" stroke-opacity=".08"/>
+    </pattern>
+    <pattern id="grain" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M1 2h1M6 6h1" stroke="#f4eedb" stroke-opacity=".08"/>
+    </pattern>
+    <g id="pine">
+      <path d="M0 0l-15 25h8l-13 20h9l-17 26h23v15H5V71h23L11 45h9L7 25h8Z"/>
+    </g>
+  </defs>
+  <rect width="1600" height="520" rx="12" fill="url(#sky)"/>
+  <rect width="1600" height="520" rx="12" fill="url(#grid)"/>
+  <g fill="none" stroke="#adbc96" stroke-opacity=".16" stroke-width="2">
+    <path d="M1020-70c-160 80-140 182-15 225s153 90 80 145-75 124 80 139 240 90 355 70"/>
+    <path d="M1060-70c-140 75-140 158-25 198s174 102 97 168-87 94 55 113 235 70 356 39"/>
+    <path d="M1100-70c-124 73-130 137-14 177s183 113 105 183-93 74 25 92 243 65 350 20"/>
+    <path d="M1140-70c-100 71-120 111-5 150s193 116 118 196-83 60 17 82 235 37 290-6"/>
+    <path d="M1180-70c-84 63-89 90 13 125s182 132 112 212-37 48 52 62 172 9 202-22"/>
+    <path d="M1220-70c-64 59-57 65 32 103s144 131 102 183 9 73 85 75 96-27 128-53"/>
+    <path d="M1260-70c-53 52-37 51 45 88s115 110 92 141 18 85 83 77 54-30 92-57"/>
+    <path d="M1325-60c-76 66 45 66 80 107s-15 114 36 132 71-4 137-65"/>
+  </g>
+  <path d="M885 417l115-120 89 76 75-157 102 161 72-91 136 131 126-52v155H885Z" fill="#546448" opacity=".32"/>
+  <path d="M782 472l145-78 91 34 112-88 102 102 113-61 129 65 126-37v111H782Z" fill="#101e18"/>
+  <g fill="#10241c" opacity=".85">
+    <use href="#pine" transform="translate(1440 298) scale(1.65)"/>
+    <use href="#pine" transform="translate(1532 258) scale(2.05)"/>
+    <use href="#pine" transform="translate(1358 343) scale(1.15)"/>
+    <use href="#pine" transform="translate(998 343) scale(1.3)"/>
+    <use href="#pine" transform="translate(918 368) scale(.9)"/>
+  </g>
+  <g transform="translate(1098 294)">
+    <path d="M0 113h33l20-67 48-36h125l38 57 52 15 9 31v33H0Z" fill="#d9773e"/>
+    <path d="M76 44l31-22h52v46H62Zm95-22h44l31 46h-75Z" fill="#1b2e26"/>
+    <path d="M159 13v117M46 92h210" fill="none" stroke="#23362b" stroke-width="5"/>
+    <path d="M117 81h22M192 81h22" stroke="#eedcc0" stroke-width="4"/>
+    <path d="M0 128h325M91 3h126" stroke="#18281f" stroke-width="12"/>
+    <rect x="297" y="98" width="18" height="16" rx="2" fill="#f0dfa9"/>
+    <g fill="#101e18" stroke="#60705a" stroke-width="6">
+      <circle cx="65" cy="140" r="32"/>
+      <circle cx="262" cy="140" r="32"/>
+    </g>
+    <g fill="#a9b294">
+      <circle cx="65" cy="140" r="11"/>
+      <circle cx="262" cy="140" r="11"/>
+    </g>
+  </g>
+  <rect x="60" y="56" width="1480" height="408" rx="3" fill="none" stroke="#9fae89" stroke-opacity=".45"/>
+  <path d="M60 120V56h68M1472 464h68v-64" fill="none" stroke="#d9773e" stroke-width="5"/>
+  <rect x="88" y="86" width="360" height="32" rx="2" fill="#d9773e"/>
+  <text x="104" y="109" fill="#17261f" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="3">EXPEDITION FIELD NOTES</text>
+  <g fill="#f0ead8" font-family="Arial, Helvetica, sans-serif" font-weight="900">
+    <text x="84" y="235" font-size="94" letter-spacing="-3">CABELA'S 4x4</text>
+    <text x="84" y="348" font-size="116" letter-spacing="5">REVIVAL</text>
+  </g>
+  <path d="M88 380h530" stroke="#d9773e" stroke-width="4"/>
+  <text x="88" y="424" fill="#c2cdaf" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="3">COMMUNITY PATCHES / PRESERVATION</text>
+  <text x="1458" y="99" text-anchor="end" fill="#d8dfc4" font-family="Consolas, monospace" font-size="19" letter-spacing="2">KEEP THE EXPEDITION GOING</text>
+  <rect width="1600" height="520" rx="12" fill="url(#grain)" pointer-events="none"/>
+</svg>

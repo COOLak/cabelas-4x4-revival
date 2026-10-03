@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "source_build": "unmodified English v1.2",
+  "source_sha256": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
+  "source_unchanged": true,
+  "unicorn_version": "2.1.4",
+  "pefile_version": "2024.8.26",
+  "method": "Full game x86 helper, including its actual x87 integer conversion helper, executed in an emulator.",
+  "limits": "Logical depth allocation is modeled. No game, mission, graphics driver, or original Windows guard-page layout is exercised.",
+  "function_entry": "0x40d2b0",
+  "opcode_changes": [
+    {
+      "va": "0x40d2d5",
+      "before": "0x7f",
+      "after": "0x7d"
+    },
+    {
+      "va": "0x40d2da",
+      "before": "0x7f",
+      "after": "0x7d"
+    }
+  ],
+  "case_pairs": 61,
+  "checks": 177,
+  "failed_checks": [],
+  "captured_case": {
+    "original": {
+      "returned": false,
+      "depth_reads": [
+        {
+          "address": "0x15b3daa6",
+          "size": 2,
+          "offset": 10369702
+        }
+      ],
+      "bounds_fault": {
+        "address": "0x15b3daa6",
+        "offset": 10369702,
+        "allocation_size": 10368000,
+        "reason": "outside logical depth allocation"
+      },
+      "emulator_error": null,
+      "instructions": 58,
+      "al": 83,
+      "esp_after": "0x1007ff4",
+      "expected_esp_after": "0x1008008",
+      "callee_saved_preserved": {
+        "EBX": false,
+        "ESI": false,
+        "EDI": false,
+        "EBP": true
+      },
+      "eip_after": "0x40d2f4",
+      "input": {
+        "width": 2880,
+        "height": 1800,
+        "x": 851.6438598632812,
+        "y": 1800.621826171875,
+        "depth": 64657.0,
+        "sample": 65535,
+        "int_x": 851,
+        "int_y": 1800
+      },
+      "patched": false
+    },
+    "patched": {
+      "returned": true,
+      "depth_reads": [],
+      "bounds_fault": null,
+      "emulator_error": null,
+      "instructions": 56,
+      "al": 0,
+      "esp_after": "0x1008008",
+      "expected_esp_after": "0x1008008",
+      "callee_saved_preserved": {
+        "EBX": true,
+        "ESI": true,
+        "EDI": true,
+        "EBP": true
+      },
+      "eip_after": "0x4000000",
+      "input": {
+        "width": 2880,
+        "height": 1800,
+        "x": 851.6438598632812,
+        "y": 1800.621826171875,
+        "depth": 64657.0,
+        "sample": 65535,
+        "int_x": 851,
+        "int_y": 1800
+      },
+      "patched": true
+    }
+  }
+}

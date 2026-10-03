@@ -1,0 +1,13 @@
+[project]
+name = "cabelas-4x4-revival"
+version = "1.2.1"
+description = "Reversible community fixes for Cabela's 4x4 Off-Road Adventure"
+requires-python = ">=3.9"
+authors = [{ name = "COOLak" }]
+license = { file = "LICENSE" }
+dependencies = []
+
+[tool.revival]
+patcher = "src/patcher.py"
+manifest = "fixes/001-depth-buffer-bounds/manifest.json"
+tests = "python -m unittest discover -s tests -v"

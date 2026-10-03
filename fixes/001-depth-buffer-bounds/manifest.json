@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "patch_version": "1.2.1",
+  "official_base_version": "1.2",
+  "status": "unofficial community fix",
+  "target_file": "4x4 Adventure.exe",
+  "source": {
+    "version": "1.2",
+    "sha256": "e9c5d3932dc87accd8a1d94a264de1badbe7edac73afaf1fa78181a30c624d1c",
+    "size": 749568
+  },
+  "patched": {
+    "sha256": "9bdb9bfaa4d91f12bc81c0db1a05765c03538fb81f0a523c978733902ba2d3c6",
+    "size": 749568
+  },
+  "checksum": "pe",
+  "changes": [
+    {
+      "offset": 53973,
+      "before": "7f",
+      "after": "7d"
+    },
+    {
+      "offset": 53978,
+      "before": "7f",
+      "after": "7d"
+    }
+  ],
+  "fix": "Reject depth-buffer sample coordinates equal to screen width or height."
+}
